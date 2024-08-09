@@ -1,0 +1,33 @@
+[
+  {
+    "id":0,
+    "question":"What is Netflix?",
+    "answer":"Netflix is an American subscription video on-demand over-the-top streaming service."
+  },
+  {
+    "id":1,
+    "question":"How much does Netflix cost?",
+    "answer":"The current prices and packages for Netflix UK are: Standard with adverts - £4.99/ month. Standard - £10.99/ month (extra member slots can be added for £4.99 each / month) Premium - £17.99/ month (extra member slots can be added for £4.99 each / month)"
+  },
+  {
+    "id":2,
+    "question":"Where can I watch?",
+    "answer":"You can watch Netflix through any supported internet-connected device that offers the Netflix app, including smart TVs, game consoles, streaming media players, cable boxes, smartphones, and tablets."
+  },
+  {
+    "id":3,
+    "question":"How do I cancel?",
+    "answer":"you have the freedom to change your plan or cancel online at any time if you decide Netflix isn't for you. There are no contracts, no cancellation fees, and no commitments."
+  },
+  {
+    "id":4,
+    "question":"What can I watch on Netflix?",
+    "answer":"Cobra Kai: Season 6. ...\nDirty Pop: The Boy Band Scam: Limited Series. ...\nSimone Biles Rising: Season 1. ...\nHomicide: Los Angeles. ...\nToo Hot to Handle: Season 6. ...\nVikings: Valhalla: Season 3. ...\nMaster of the House: Season 1. ...\nCobra Kai: Season 1.\n"
+  },
+  {
+    "id":5,
+    "question":"Is Netflix good for kids?",
+    "answer":"If there are specific titles you deem inappropriate for your child, even within their maturity level, Netflix allows you to block these titles: Title Restrictions: Within the profile's settings, look for an option to restrict certain titles"
+  }
+
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": 0,
+    "name": "The beauty",
+    "genre": "comedy",
+    "year": 2021,
+    "preview_image": "The beauty"
+  },
+  {
+    "id": 1,
+    "name": "The might agent",
+    "genre": "action",
+    "year": 2021,
+    "preview_image": "The might Agent"
+  },
+  {
+    "id": 2,
+    "name": "RDX",
+    "year": 2021,
+    "genre": "action",
+    "preview_image": "RDX"
+  },
+  {
+    "id": 3,
+    "name": "Lost in Space",
+    "year": 2021,
+    "genre": "fantazie",
+    "preview_image": "Lost in Space"
+  },
+  {
+    "id": 4,
+    "name": "Kung Fu Panda",
+    "year": 2021,
+    "genre": "fantazie",
+    "preview_image": "Kung Fu Panda"
+  },
+  {
+    "id": 5,
+    "name": "Die Hard",
+    "year": 1984,
+    "genre": "action",
+    "preview_image": "Die Hard"
+  },
+  {
+    "id": 6,
+    "name": "Mr Bean",
+    "year": 1991,
+    "genre": "action",
+    "preview_image": "Mr Bean"
+  },
+  {
+    "id": 7,
+    "name": "The mask",
+    "year": 1994,
+    "genre": "comedy",
+    "preview_image": "The mask"
+  },
+  {
+    "id": 7,
+    "name": "Avengers",
+    "year": 2018,
+    "genre": "fantazie",
+    "preview_image": "Avengers"
+  },
+  {
+    "id": 8,
+    "name": "Bruce Almighty",
+    "year": 2018,
+    "genre": "fantazie",
+    "preview_image": "BruceAlmighty"
+  },
+  {
+    "id": 9,
+    "name": "Men in Black",
+    "year": 1995,
+    "genre": "fantazie",
+    "preview_image": "Men in Black"
+  },
+  {
+    "id": 10,
+    "name": "Beverly Hills Cop",
+    "year": 2024,
+    "genre": "action",
+    "preview_image": "Beverly Hills Cop"
+  },
+  {
+    "id": 10,
+    "name": "Spider Man",
+    "year": 2018,
+    "genre": "action",
+    "preview_image": "Spider man"
+  },
+  {
+    "id": 11,
+    "name": "Star Wars",
+    "year": 2019,
+    "genre": "fantazie",
+    "preview_image": "Star Wars"
+  },
+  {
+    "id": 12,
+    "name": "Meet the Fockers",
+    "year": 2004,
+    "genre": "comedy",
+    "preview_image": "Meet the Fockers"
+  },
+  {
+    "id": 13,
+    "name": "Transporter",
+    "year": 1996,
+    "genre": "action",
+    "preview_image": "Transporter"
+  },
+
+  {
+    "id": 14,
+    "name": "Avatar",
+    "year": 2009,
+    "genre": "fantazie",
+    "preview_image": "Avatar"
+  }
+]

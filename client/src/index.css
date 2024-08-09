@@ -11,3 +11,8 @@ body{
   font-family: Inter, serif;
 }
 
+#check-box-1:checked ~ .check-1{
+  opacity: 100;
+  font-size:12px;
+}
+

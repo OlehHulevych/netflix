@@ -42,7 +42,7 @@ export default function Header() {
         </div>
       </div>
         <div className = {`align-middle transition-height .5s   text-white absolute top-16 right-0 ${openedUser?'max-h-[400px] opacity-100 ':'max-h-0 opacity-0 '} max-w-[200px] min-w-[100px] min-h-[150px]  p-6    h-full  bg-slate-950 flex flex-col justify-center items-center text-xl z-20 max-[880px]:top-16 max-[800px]:top-12 max-[770px]:text-base max-[640px]:top-10 max-[500px]:text-sm max-[600px]:p-4 max-[380px]:text-xs max-[380px]:p-2 max-[380px]:min-h-[100px]`}>
-            <button className={"table-fixed w-full max-w-[150px] bg-red-600 font-bold px-6 py-0.5 rounded-md mb-2 transition-all .5s hover:bg-red-300 hover:text-black max-[770px]:max-w-[125px] "}>Sign up</button>
+            <button className={"table-fixed w-full max-w-[150px] bg-red-600 font-bold px-6 py-0.5 rounded-md mb-2 transition-all .5s hover:bg-red-300 hover:text-black max-[770px]:max-w-[125px] "}><Link to={'/reg'}>Sign up</Link></button>
             <button className={"table-fixed w-full max-w-[150px] bg-red-600 font-bold px-6 py-0.5 rounded-md mb-2 transition-all .5s hover:bg-red-300 hover:text-black max-[770px]:max-w-[125px]"}><Link to={'/login'}>Log in</Link></button>
             <button className={"table-fixed w-full max-w-[150px] bg-red-600 font-bold px-6 py-0.5 rounded-md mb-2 transition-all .5s hover:bg-red-300 hover:text-black max-[770px]:max-w-[125px]"}>Settings</button>
         </div>

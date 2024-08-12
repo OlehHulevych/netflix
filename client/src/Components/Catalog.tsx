@@ -5,7 +5,8 @@ interface movieType{
     name: String,
     year: Number,
     genre: String,
-    preview_image: String
+    preview_image: String,
+    banner_name_image:String
 }
 const Catalog = () => {
     const sortFilms = (genre:String)=>{

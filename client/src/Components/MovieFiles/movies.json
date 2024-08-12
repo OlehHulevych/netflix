@@ -4,119 +4,170 @@
     "name": "The beauty",
     "genre": "comedy",
     "year": 2021,
-    "preview_image": "The beauty"
+    "preview_image": "The beauty",
+    "banner_name_image": "the_beauty",
+    "description": "is a South Korean television series starring Moon Ka-young, Cha Eun-woo, Hwang In-youp, and Park Yoo-na.",
+    "duration": "16"
   },
   {
     "id": 1,
-    "name": "The might agent",
+    "name": "The night agent",
     "genre": "action",
     "year": 2021,
-    "preview_image": "The might Agent"
+    "preview_image": "The might Agent",
+    "banner_name_image": "the_night_agent",
+    "description": "Inspired by a real-life FBI connection, the series adds authenticity to its thrilling plotline. Is The Night Agent based on true events? Matthew Quirk, the author of the novel 'The Night Agent', revealed that his book drew inspiration from a close friend working the overnight shift at the FBI in Washington, DC.",
+    "duration": "10"
   },
   {
     "id": 2,
     "name": "RDX",
     "year": 2021,
     "genre": "action",
-    "preview_image": "RDX"
+    "preview_image": "RDX",
+    "banner_name_image": "rdx",
+    "description": "he film revolves around Robert, Dony and Xavier's crusade to exact vengeance against Paulson and his gang for assaulting their family. RDX: Robert Dony Xavier",
+    "duration": "2:31"
   },
   {
     "id": 3,
     "name": "Lost in Space",
     "year": 2021,
     "genre": "fantazie",
-    "preview_image": "Lost in Space"
+    "preview_image": "Lost in Space",
+    "banner_name_image": "lost_in_space",
+    "description": "After crash-landing on an alien planet, the Robinson family fights against all odds to survive and escape. But they're surrounded by hidden dangers.",
+    "duration": "3 seasons"
   },
   {
     "id": 4,
     "name": "Kung Fu Panda",
     "year": 2021,
     "genre": "fantazie",
-    "preview_image": "Kung Fu Panda"
+    "preview_image": "Kung Fu Panda",
+    "banner_name_image": "kung_fu_panda",
+    "description": "Legendary warrior Po teams up with an elite English knight on a global quest to rescue magical weapons, restore his reputation — and save the world!",
+    "duration":"3 seasons"
   },
   {
     "id": 5,
     "name": "Die Hard",
     "year": 1984,
     "genre": "action",
-    "preview_image": "Die Hard"
+    "preview_image": "Die Hard",
+    "banner_name_image": "die_hard",
+    "description": "New York cop John McClane fights terrorists in an Los Angeles skyscraper in a bid to rescue his estranged wife, who happens to be one of the hostages.",
+    "duration":"2:17"
   },
   {
     "id": 6,
     "name": "Mr Bean",
     "year": 1991,
     "genre": "action",
-    "preview_image": "Mr Bean"
+    "preview_image": "Mr Bean",
+    "banner_name_image": "mr_bean",
+    "description": "Disaster-prone Mr. Bean is sent to Los Angeles to guard a famous painting — but as he's unfit for any physical task, everything goes hilariously wrong.",
+    "duration":"1:30"
   },
   {
     "id": 7,
     "name": "The mask",
     "year": 1994,
     "genre": "comedy",
-    "preview_image": "The mask"
-  },
-  {
-    "id": 7,
-    "name": "Avengers",
-    "year": 2018,
-    "genre": "fantazie",
-    "preview_image": "Avengers"
+    "preview_image": "The mask",
+    "banner_name_image": "the_mask",
+    "description": "A hapless bank teller discovers an ancient mask that turns him into a zany prankster who acts on his deepest desires.",
+    "duration":"1:41"
   },
   {
     "id": 8,
-    "name": "Bruce Almighty",
+    "name": "Avengers",
     "year": 2018,
     "genre": "fantazie",
-    "preview_image": "BruceAlmighty"
+    "preview_image": "Avengers",
+    "banner_name_image": "avengers",
+    "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    "duration":"3:10"
   },
   {
     "id": 9,
+    "name": "Bruce Almighty",
+    "year": 2018,
+    "genre": "fantazie",
+    "preview_image": "BruceAlmighty",
+    "banner_name_image": "bruce_almighty",
+    "description": "A whiny news reporter is given the chance to step into God's shoes.",
+    "duration":"1:41"
+  },
+  {
+    "id": 10,
     "name": "Men in Black",
     "year": 1995,
     "genre": "fantazie",
-    "preview_image": "Men in Black"
-  },
-  {
-    "id": 10,
-    "name": "Beverly Hills Cop",
-    "year": 2024,
-    "genre": "action",
-    "preview_image": "Beverly Hills Cop"
-  },
-  {
-    "id": 10,
-    "name": "Spider Man",
-    "year": 2018,
-    "genre": "action",
-    "preview_image": "Spider man"
+    "preview_image": "Men in Black",
+    "banner_name_image": "men_in_black",
+    "description": "A brash New York City cop partners with a no-nonsense government agent on a top-secret team that monitors extraterrestrials on Earth.",
+    "duration":"1:31"
   },
   {
     "id": 11,
-    "name": "Star Wars",
-    "year": 2019,
-    "genre": "fantazie",
-    "preview_image": "Star Wars"
+    "name": "Beverly Hills Cop",
+    "year": 2024,
+    "genre": "action",
+    "preview_image": "Beverly Hills Cop",
+    "banner_name_image": "beverly_hills_cop",
+    "description": "Forty years after his unforgettable first case in Beverly Hills, Detroit cop Axel Foley returns to do what he does best: solve crimes and cause chaos.",
+    "duration":"1:57"
   },
   {
     "id": 12,
-    "name": "Meet the Fockers",
-    "year": 2004,
-    "genre": "comedy",
-    "preview_image": "Meet the Fockers"
+    "name": "Spider Man",
+    "year": 2018,
+    "genre": "action",
+    "preview_image": "Spider man",
+    "banner_name_image": "spider_man",
+    "description": "Peter Parker alienates those around him as he faces down rivals, villains and a force that mysteriously darkens his Spidey suit — and his attitude.",
+    "duration":"2:19"
   },
   {
     "id": 13,
+    "name": "Star Wars",
+    "year": 2019,
+    "genre": "fantazie",
+    "preview_image": "Star Wars",
+    "banner_name_image": "star_wars",
+    "description": "Thirty years since the destruction of the second Death Star, the sinister First Order, commanded by the mysterious Snoke and apprentice Kylo Ren, rise from the ashes of the Empire. The Resistance, led by General Leia Organa, attempts to thwart the First Order's threat, but they're desperate for help. Rey, a desert scavenger, and Finn, an ex-stormtrooper, find themselves joining forces with Han Solo and Chewbacca in a desperate mission to return a BB-unit droid with a map to Luke Skywalker back to the Resistance. ",
+    "duration":"2:16"
+  },
+  {
+    "id": 14,
+    "name": "Meet the Fockers",
+    "year": 2004,
+    "genre": "comedy",
+    "preview_image": "Meet the Fockers",
+    "banner_name_image": "meet_the_fockers",
+    "description": "Parents and personalities clash when newly engaged Greg and Pam attempt to bring their families together in this sequel to the hit comedy. ",
+    "duration":"1:56"
+  },
+  {
+    "id": 15,
     "name": "Transporter",
     "year": 1996,
     "genre": "action",
-    "preview_image": "Transporter"
+    "preview_image": "Transporter",
+    "banner_name_image": "the_transporter",
+    "description": "In this action-packed sequel, Frank Martin is implicated in the kidnapping of a politician's son whom he's been hired to chauffer. ",
+    "duration":"1:27"
   },
 
   {
-    "id": 14,
+    "id": 16,
     "name": "Avatar",
     "year": 2009,
     "genre": "fantazie",
-    "preview_image": "Avatar"
+    "preview_image": "Avatar",
+    "banner_name_image": "avatar",
+    "description": "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.",
+    "duration":"3:12"
   }
 ]

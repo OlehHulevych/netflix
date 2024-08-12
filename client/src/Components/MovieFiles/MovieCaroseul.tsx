@@ -9,7 +9,8 @@ interface movieType{
     name: String,
     year: Number,
     genre: String,
-    preview_image: String
+    preview_image: String,
+    banner_name_image:String
 }
 interface props {
     movies:Array<movieType>
@@ -42,7 +43,7 @@ const MovieCaroseul = ({movies}:props) => {
         <div className={"w-full text-center"}>
             <Carousel responsive={responsive}>
                 {movies.map((movie:movieType)=>(
-                    <MovieItem name={movie.name} preview_image={movie.preview_image}/>
+                    <MovieItem name={movie.name} preview_image={movie.preview_image} id={movie.id} />
                 ))}
             </Carousel>
         </div>

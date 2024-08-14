@@ -15,7 +15,7 @@ const Footer = () => {
 
     }
     return (
-        <footer className={"w-full flex justify-center mt-12"}>
+        <footer className={"w-full flex justify-center mt-12 bg-gray-450"}>
             <div className={" w-[90%] flex  flex-col pl-16 justify-start items-start max-[980px]:w-full max-[635px]:pl-4 text-white "}>
                 <h2 className={"w-[80%] text-2xl mb-5 flex justify-start max-[980px]:w-full max-[980px]:text-xl max-[590px]:text-lg  "}>Questions?  Call 000-800-919-1694.</h2>
                 <div className="flex w-[90%]   flex-row justify-between items-center  max-[980px]:w-full  ">

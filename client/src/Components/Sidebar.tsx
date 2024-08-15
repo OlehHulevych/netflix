@@ -3,6 +3,7 @@ import {FaPlayCircle, FaSearch} from "react-icons/fa";
 import {MdMovieCreation} from "react-icons/md";
 import {PiTelevisionSimple} from "react-icons/pi";
 import {CiBoxList} from "react-icons/ci";
+import {Link} from "react-router-dom";
 
 type props ={
     opened:Boolean;
@@ -26,7 +27,7 @@ const Sidebar = ({opened}:props) => {
             </div>
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <FaSearch className={"mr-2 text-3xl max-[880px]:text-xl"}/>
-                <div className={"text-lg"}>Browse</div>
+                <div className={"text-lg"}><Link to={"/browse"}>Browse</Link></div>
             </div>
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <MdMovieCreation className={"mr-2 text-3xl max-[880px]:text-xl"}/>

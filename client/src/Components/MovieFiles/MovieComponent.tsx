@@ -44,7 +44,7 @@ const MovieComponent = () => {
                         Play
                     </button>
                     <button className={'inline-flex align-top justify-center  w-[157px] items-center text-black text-xl font-bold max-[950px]:max-h-[50px]   h-[75px]  bg-white mr-10 rounded-sm group hover:bg-opacity-30 hover:text-white max-[900px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px] max-[768px]:p-2 max-[600px]:text-base max-[530px]:p-0.5 max-[530px]:max-h-[40px]'}>
-                        <div className={'text-3xl mr-1 font-thin max-[768px]:text-6xl '}><CiCirclePlus/></div>
+                        <div className={'text-6xl mr-1 font-thin max-[768px]:text-3xl '}><CiCirclePlus/></div>
                         <div>Add</div>
                     </button>
                 </div>

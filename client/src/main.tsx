@@ -6,6 +6,7 @@ import './index.css'
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import RegPage from "./pages/RegPage/RegPage.tsx";
 import MovieComponent from "./Components/MovieFiles/MovieComponent.tsx";
+import BrowsePage from "./pages/BrowsePage.tsx";
 
 
 
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path="/login" element={<SignPage/>}/>
                 <Route path={"/reg"} element={<RegPage/>} />
                 <Route path={"/movies/:id"} element={<MovieComponent/>}/>?
+                <Route path={"/browse"} element={<BrowsePage/>}/>?
             </Routes>
         </BrowserRouter>
   </React.StrictMode>,

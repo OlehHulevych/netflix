@@ -1,6 +1,8 @@
-import { FaSearch, FaRegUserCircle} from "react-icons/fa";
-import { useState } from "react";
-import {Link} from 'react-router-dom'
+import { FaRegUserCircle } from "react-icons/fa";
+
+import { useState, useEffect } from "react";
+
+import Sidebar from "./Sidebar.tsx";
 
 
 
@@ -8,6 +10,22 @@ import {Link} from 'react-router-dom'
 export default function Header() {
   const[opened,setOpened] = useState(false);
   const[openedUser, setOpenedUser] = useState(false);
+
+  const handleKeyEscPressing = (event:KeyboardEvent)=>{
+
+      if(event.key === "Escape"){
+          setOpenedUser(false);
+          console.log("Work")
+      }
+
+  }
+
+  useEffect(()=>{
+      window.addEventListener("keydown", handleKeyEscPressing);
+      return()=>{
+          window.removeEventListener("keydown",handleKeyEscPressing);
+      }
+  },[])
   
   return (
     <header className='z-20 fixed font-inter w-full min-w-[800px], max-h-24 h-full  , bg-black bg-opacity-60 min-[320px]:px-1 px-6 py-3 flex justify-between max-[800px]:max-h-16 max-[770px]:max-h-12'>
@@ -32,20 +50,11 @@ export default function Header() {
       </nav>
       <div className='w-1/3 flex items-center justify-end lg-2/3'>
         <div className="flex text-xl min-[250px]:text-xs min-[769px]:text-xl items-center">
-          <div className="group">
-          <form action="" className="flex rounded-full   items-center mr-4  group-hover:bg-white group-focus-within:bg-white pr-2">
-            <input type="text" placeholder="Search something" className="  transition-width mr-2 opacity-0 w-[1px]  group-focus-within::opacity-100 sm:group-focus-within:w-[150px] min-[550px]:group-focus-within:w-[200px] min-[320px]:group-focus-within:w-[160px]    min-[1023px]:group-focus-within:w-[250px] group-focus-within:visible group-focus-within:opacity-100  ease-in-out duration-700  capitalize rounded-full min-[780px]:group-focus-within:w-[130px]   min-[769px]:h-7 py-4 min-[320px]:py-0 min-[320px]:pl-2 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline  min-[320px]:text-xs text-xs" />
-            <FaSearch className=" text-white group-focus-within:text-black group-hover:text-black"/>
-          </form>
-          </div>
+
           <div ><FaRegUserCircle onClick={()=>setOpenedUser(!openedUser)} className="text-white mr-2 text-4xl p-2  cursor-pointer transition-all ease-in-out duration-300  hover:bg-slate-600 rounded-full "/></div>
         </div>
       </div>
-        <div className = {`align-middle transition-height .5s   text-white absolute top-16 right-0 ${openedUser?'max-h-[400px] opacity-100 ':'max-h-0 opacity-0 '} max-w-[200px] min-w-[100px] min-h-[150px]  p-6    h-full  bg-slate-950 flex flex-col justify-center items-center text-xl z-20 max-[880px]:top-16 max-[800px]:top-12 max-[770px]:text-base max-[640px]:top-10 max-[500px]:text-sm max-[600px]:p-4 max-[380px]:text-xs max-[380px]:p-2 max-[380px]:min-h-[100px]`}>
-            <button className={"table-fixed w-full max-w-[150px] bg-red-600 font-bold px-6 py-0.5 rounded-md mb-2 transition-all .5s hover:bg-red-300 hover:text-black max-[770px]:max-w-[125px] "}><Link to={'/reg'}>Sign up</Link></button>
-            <button className={"table-fixed w-full max-w-[150px] bg-red-600 font-bold px-6 py-0.5 rounded-md mb-2 transition-all .5s hover:bg-red-300 hover:text-black max-[770px]:max-w-[125px]"}><Link to={'/login'}>Log in</Link></button>
-            <button className={"table-fixed w-full max-w-[150px] bg-red-600 font-bold px-6 py-0.5 rounded-md mb-2 transition-all .5s hover:bg-red-300 hover:text-black max-[770px]:max-w-[125px]"}>Settings</button>
-        </div>
+        <Sidebar opened={openedUser}/>
     </header>
   )
 }

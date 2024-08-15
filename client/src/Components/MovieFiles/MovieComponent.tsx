@@ -1,4 +1,5 @@
-import {FaInfoCircle, FaPlay} from "react-icons/fa";
+import {FaPlay} from "react-icons/fa";
+import { CiCirclePlus } from "react-icons/ci";
 import {useParams} from "react-router-dom";
 import data from './movies.json'
 import Footer from "../Footer.tsx";
@@ -39,12 +40,12 @@ const MovieComponent = () => {
                 </div>
                 <div className={'text-white pt-5 max-[768px]:text-center '}>
                     <button className={'inline-flex align-top justify-center w-[157px] items-center text-black text-xl font-bold max-[950px]:max-h-[50px]   h-[75px]  bg-white mr-10 rounded-sm group hover:bg-opacity-30 hover:text-white max-[900px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px] max-[768px]:p-2 max-[600px]:text-base  max-[530px]:max-h-[40px]'}>
-                        <FaPlay className={'text-3xl max-[768px]:text-6xl max-[530px]:text-xl '}/>
+                        <FaPlay className={'text-3xl mr-1 max-[768px]:text-6xl max-[530px]:text-xl '}/>
                         Play
                     </button>
-                    <button className={'inline-flex align-top justify-center w-[157px] items-center text-black text-xl font-bold max-[950px]:max-h-[50px]   h-[75px]  bg-white mr-10 rounded-sm group hover:bg-opacity-30 hover:text-white max-[900px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px] max-[768px]:p-2 max-[600px]:text-base max-[530px]:p-0.5 max-[530px]:max-h-[40px]'}>
-                        <FaInfoCircle className={'text-3xl mr-2 font-thin max-[768px]:text-6xl '}/>
-                        More Info
+                    <button className={'inline-flex align-top justify-center  w-[157px] items-center text-black text-xl font-bold max-[950px]:max-h-[50px]   h-[75px]  bg-white mr-10 rounded-sm group hover:bg-opacity-30 hover:text-white max-[900px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px] max-[768px]:p-2 max-[600px]:text-base max-[530px]:p-0.5 max-[530px]:max-h-[40px]'}>
+                        <div className={'text-3xl mr-1 font-thin max-[768px]:text-6xl '}><CiCirclePlus/></div>
+                        <div>Add</div>
                     </button>
                 </div>
                 </div>
@@ -56,8 +57,8 @@ const MovieComponent = () => {
             <div className = {"w-full  relative overflow-hidden  text-white    min-h-screen max-[550px] "}>
                 <iframe
 
-                    className={" w-1/2 h-1/2 top-1/2 left-0 top-0  right-0 absolute m-auto max-[769px]:w-3/4 max-[550px]:mx-auto max-[550px]:m-4 max-[550px]:-top-4 "}
-                    src="https://www.youtube.com/embed/d9MyW72ELq0?si=IHzO8ZdevV4hE4aH"
+                    className={" w-1/2 h-1/2 top-1/3 left-0 top-0  right-0 absolute m-auto max-[769px]:w-3/4 max-[550px]:mx-auto max-[550px]:m-4 max-[550px]:-top-4 "}
+                    src="blob:https://ashdi.vip/5d4b3557-84e2-473c-8281-77fed07ad125"
                     title="YouTube video player"
 
                     frameBorder="0"

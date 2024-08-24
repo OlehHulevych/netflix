@@ -46,7 +46,7 @@ Movie.belongsTo(Type);
 Genre.hasMany(Movie);
 Movie.belongsTo(Genre);
 
-module.exports = {
+export {
     User,
     Movie,
     MovieListItem,

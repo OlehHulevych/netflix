@@ -2,6 +2,8 @@ import express, {Request, Response} from 'express';
 import dotenv from "dotenv"
 const models = require('./models/models')
 import cors from 'cors'
+import router from './routes/index.ts'
+import fileUpload from 'express-fileupload';
 dotenv.config();
 
 const port = process.env.PORT
@@ -11,13 +13,11 @@ const app = express();
 
 app.use(cors())
 app.use(express.json);
+app.use(fileUpload({}));
+app.use('/api', router);
 
 
-app.get('/', (req:Request,res:Response)=>{
-    res.send("Hello world")
-})
 
-console.log(process.env.DB_PASSWORD)
 
 
 

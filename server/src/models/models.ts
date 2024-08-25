@@ -8,6 +8,7 @@ const User = sequelize.define('user',{
     role:{type:DataTypes.STRING, defaultValue:"USER"}
 })
 
+
 const Movie = sequelize.define('movie', {
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type:DataTypes.STRING, unique:true},
@@ -17,15 +18,18 @@ const Movie = sequelize.define('movie', {
     description:{type:DataTypes.STRING}
 })
 
+
 const Genre = sequelize.define("genre",{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type:DataTypes.STRING, unique:true}
 })
 
+
 const Type = sequelize.define("type",{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type:DataTypes.STRING, unique:true}
 })
+
 
 const ListMovies=  sequelize.define("ListMovies",{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},

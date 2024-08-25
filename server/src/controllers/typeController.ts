@@ -14,4 +14,4 @@ class TypeController{
     }
 }
 
-module.exports = new TypeController();
+export default new TypeController();

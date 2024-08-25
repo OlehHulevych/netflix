@@ -1,8 +1,9 @@
 import Router from 'express';
+import GenreController from '../controllers/genreController.ts'
 
-const router= Router();
+const router = Router();
 
-router.post('/');
-router.get('/');
+router.post('/', GenreController.create);
+router.get('/', GenreController.getAll);
 
 export default router;

@@ -14,4 +14,4 @@ class GenreController{
     }
 }
 
-module.exports = new GenreController();
+export default new GenreController();

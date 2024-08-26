@@ -5,6 +5,7 @@ const User = sequelize.define('user',{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type:DataTypes.STRING, unique:true},
     email:{type:DataTypes.STRING, unique:true},
+    password:{type:DataTypes.STRING},
     role:{type:DataTypes.STRING, defaultValue:"USER"}
 })
 
@@ -13,6 +14,7 @@ const Movie = sequelize.define('movie', {
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type:DataTypes.STRING, unique:true},
     year:{type:DataTypes.STRING},
+    duration:{type:DataTypes.STRING},
     name_img:{type:DataTypes.STRING},
     banner_img:{type:DataTypes.STRING},
     description:{type:DataTypes.STRING}

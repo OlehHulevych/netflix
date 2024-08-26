@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import dotenv from "dotenv"
-const models = require('./models/models')
+const model = require('./models/models.ts')
+
 import cors from 'cors'
 import router from './routes/index.ts'
 import fileUpload from 'express-fileupload';
@@ -16,6 +17,7 @@ app.use(cors())
 app.use(express.json());
 app.use(fileUpload({}));
 app.use('/api', router)
+
 
 const start = async ()=>{
     try {

@@ -16,7 +16,7 @@ const Sidebar = ({opened}:props) => {
                 <img className={" max-w-[40px] max-h-[40px] w-full h-full border-4 border-white border-solid rounded-full mr-2"} src="/images/user.png" alt=""/>
                 <div>
                     <div className={"text-lg max-[880px]:text-base max-[680px]:text-sm"}>Oleh Hulevych</div>
-                    <div className={"text-sm cursor-pointer max-[680px]:text-xs"}>Change profile</div>
+                    <div className={"text-sm cursor-pointer max-[680px]:text-xs"}><Link to={"/login"}>Change profile</Link></div>
                 </div>
 
 

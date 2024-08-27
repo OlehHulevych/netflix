@@ -1,5 +1,6 @@
 import { FaEye, FaCheck, FaGlobe} from "react-icons/fa";
 import  {useState} from "react";
+import {Link} from 'react-router-dom'
 
 
 
@@ -58,7 +59,7 @@ export default function SignPage():JSX.Element {
 
                         <div className={"flex text-gray-500 px-1 mb-4 max-[768px]:text-sm"}>
                             <p>New to Netflix?</p>
-                            <span className={"text-white ml-1"}><a href={"#"}>Sign up now</a></span>
+                            <span className={"text-white ml-1"}><Link to={"/reg"}>Sign up now</Link></span>
 
                         </div>
                         <p className={"w-full text-gray-500 text-xs pl-1"}>

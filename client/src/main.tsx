@@ -7,6 +7,8 @@ import {Routes, Route, BrowserRouter} from "react-router-dom";
 import RegPage from "./pages/RegPage/RegPage.tsx";
 import MovieComponent from "./Components/MovieFiles/MovieComponent.tsx";
 import BrowsePage from "./pages/BrowsePage.tsx";
+import NextPage from "./pages/RegPage/NextPage.tsx";
+import WelcomePage from "./pages/WelcomePage.tsx";
 
 
 
@@ -20,6 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Route path={"/reg"} element={<RegPage/>} />
                 <Route path={"/movies/:id"} element={<MovieComponent/>}/>?
                 <Route path={"/browse"} element={<BrowsePage/>}/>?
+                <Route path={"reg/name"} element={<NextPage/>}/>
+                <Route path={"/reg/welcome"} element={<WelcomePage/>}/>
             </Routes>
         </BrowserRouter>
   </React.StrictMode>,

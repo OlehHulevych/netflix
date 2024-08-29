@@ -1,32 +1,28 @@
+import { makeAutoObservable } from "mobx";
 
-
-export default class UserStore{
+export default class UserStore {
+    private _isAuth: boolean;
+    private _user: any; // Using 'any' since you don't need a strict type
 
     constructor() {
-
-        // @ts-ignore
-        this._auth = false;
-        // @ts-ignore
-        this.user = {}
+        this._isAuth = false;
+        this._user = {};
+        makeAutoObservable(this);
     }
-    setIsAuth(bool:boolean){
-        // @ts-ignore
+
+    setIsAuth(bool: boolean) {
         this._isAuth = bool;
     }
 
-    setUser(user:any){
-        // @ts-ignore
-        this._user=user;
+    setUser(user: any) {
+        this._user = user;
     }
 
-    get IsAuth(){
-        // @ts-ignore
+    get isAuth(): boolean {
         return this._isAuth;
     }
 
-    get user(){
-        // @ts-ignore
+    get user(): any {
         return this._user;
     }
-
 }

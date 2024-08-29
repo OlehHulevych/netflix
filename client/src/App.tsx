@@ -1,20 +1,35 @@
 
 import './App.css'
-import Layout from './Layout.tsx'
-import Main from './pages/Main.tsx'
 // @ts-ignore
 import UserStore from './store/UserStore.ts'
+import {observer} from "mobx-react-lite";
+import {useContext} from "react";
+import AppRoutes from "./AppRouters.tsx";
+import {BrowserRouter} from "react-router-dom";
+import {Context} from './main.tsx'
+import {useEffect} from "react";
+import {check} from "./http/userAPI.ts";
 
 
 
-function App() {
-  
+const App=observer(()=> {
+    // @ts-ignore
+    const {user} = useContext(Context);
 
+    // useEffect(()=>{
+    //     check().then((data)=>{
+    //         user.setUser(true)
+    //         user.setIsAuth(true)
+    //     })
+    // })
   return (
-        <Layout>
-            <Main/>
-        </Layout>
+      <>
+          <BrowserRouter>
+            <AppRoutes/>
+          </BrowserRouter>
+
+      </>
   )
-}
+})
 
 export default App

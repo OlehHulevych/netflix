@@ -1,30 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import SignPage from './pages/SignPage.tsx'
 import './index.css'
-import {Routes, Route, BrowserRouter} from "react-router-dom";
-import RegPage from "./pages/RegPage/RegPage.tsx";
-import MovieComponent from "./Components/MovieFiles/MovieComponent.tsx";
-import BrowsePage from "./pages/BrowsePage.tsx";
-import NextPage from "./pages/RegPage/NextPage.tsx";
-import WelcomePage from "./pages/WelcomePage.tsx";
+import App from './App.tsx'
+import {createContext} from "react";
+import UserStore from "./store/UserStore.ts";
 
+type ContextType = {
+    user: UserStore | null;
+};
+
+export const Context = createContext<ContextType|null>(null);
 
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App/>}/>
-                <Route path="/login" element={<SignPage/>}/>
-                <Route path={"/reg"} element={<RegPage/>} />
-                <Route path={"/movies/:id"} element={<MovieComponent/>}/>?
-                <Route path={"/browse"} element={<BrowsePage/>}/>?
-                <Route path={"reg/name"} element={<NextPage/>}/>
-                <Route path={"/reg/welcome"} element={<WelcomePage/>}/>
-            </Routes>
-        </BrowserRouter>
+    <Context.Provider value={{
+        user:new UserStore()
+
+    }}>
+            <App/>
+    </Context.Provider>
   </React.StrictMode>,
 )

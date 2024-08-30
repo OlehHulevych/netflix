@@ -9,10 +9,16 @@ export const registration = async(email:String,name:String, password:String)=>{
 }
 
 
-export const login = async(email:String, password:String)=>{
-    const {data} = await $host.post('api/user/registration',{email,password});
-    localStorage.setItem("token", data.token);
-    return jwtDecode(data.token);
+export const login = async(email:String, password:String)=> {
+    const { data } = await $host.post('api/user/login', { email, password });
+    console.log("API Response:", data); // Log the full response
+
+    if (typeof data.token === 'string') {
+        localStorage.setItem("token", data.token);
+        return jwtDecode(data.token);
+    } else {
+        throw new Error("Invalid token format");
+    }
 }
 
 export const check = async()=>{

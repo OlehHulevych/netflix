@@ -28,14 +28,14 @@ import { Request, Response, NextFunction } from 'express';
         const {email, password} = req.body;
         const user:any = await User.findOne({where:{email}})
         if(!user){
-            return next(ApiError.internal("Wrong password"));
+            return res.json({message:"User not found"})
         }
         let comparePassword = bcrypt.compareSync(password, user.password);
         if(!comparePassword){
-            return next(ApiError.internal("Wrong password"));
+            return res.json({message:"Wrong Password"})
         }
         const token = jwt.sign({id:user.id, name:user.name, password:user.password}, process.env.JWT_SECRET_KEY, {expiresIn:'168h'});
-        return res.json({token});
+        return res.json({token:token});
 
     }
 

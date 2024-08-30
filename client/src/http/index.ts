@@ -1,15 +1,14 @@
 
-import dotenv from 'dotenv'
 import axios, { AxiosRequestConfig} from "axios";
-dotenv.config();
+
 
 
 const $host = axios.create({
-    baseURL:process.env.REACT_API_URL
+    baseURL:import.meta.env.VITE_API_URL
 })
 
 const $authHost = axios.create({
-    baseURL:process.env.REACT_API_URL
+    baseURL:import.meta.env.VITE_API_URL
 })
 
 const authInterceptor = (config:AxiosRequestConfig):AxiosRequestConfig=>{
@@ -30,3 +29,4 @@ export {
     $host,
     $authHost
 }
+

@@ -1,25 +1,28 @@
 import { FaEye, FaCheck, FaGlobe} from "react-icons/fa";
-import  {useState} from "react";
+import {useContext, useState} from "react";
 import {Link} from 'react-router-dom'
-
+import Footer from "../Components/Footer.tsx";
+import {login} from '../http/userAPI.ts';
+import {Context} from '../main.tsx'
 
 
 
 export default function SignPage():JSX.Element {
-    const [showPassword, setShowPassword] = useState<boolean>(false);
-    const [showLanguageSelector, setShowLanguageSelector] = useState(false);
-    const [language, setLanguage] = useState<String>("English");
 
-    const changeLanguage = (e:any) =>{
-        let newLanguage:string=  e.currentTarget.querySelector('div').textContent;
-        console.log(newLanguage);
-        if (e.textContent !== null) {
-            // @ts-ignore
-            e.currentTarget.querySelector('div').textContent = language;
+    // @ts-ignore
+    const {user} = useContext(Context);
+    const [email, setEmail] = useState<String>("");
+    const [password, setPassword] = useState<String>("");
+
+    const handleSubmit = async ()=>{
+        try{
+            const data = await login(email, password);
+            user.setUser(user);
         }
-        setLanguage(newLanguage);
+
 
     }
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     return (
         <>
             <header className={"w-full h-24 bg-black-500 absolute top left-0 z-20"}>
@@ -71,53 +74,7 @@ export default function SignPage():JSX.Element {
 
                 </div>
             </main>
-            <footer className={" w-full bg-black bg-opacity-80 max-h-[320px] h-full min-h-[250px] text-gray-500  flex justify-center items-center flex-col py-10    "}>
-
-                <div className={" w-[90%] flex  flex-col pl-16 justify-start items-start max-[980px]:w-full max-[635px]:pl-4 "}>
-                    <h2 className={"w-[90%] text-2xl mb-5 flex justify-start max-[980px]:w-full max-[980px]:text-xl max-[590px]:text-lg  "}>Questions? Contact us.</h2>
-                <div className="flex w-[90%]   flex-row justify-between items-center  max-[980px]:w-full  ">
-
-                    <div className={"text-xl w-full max-w-[320px] max-[980px]:text-base max-[590px]:text-sm relative  "}>
-                        <div className={"mb-2"}>FAQ</div>
-                        <div>Terms of Us</div>
-
-                    </div>
-                    <div className={"text-xl w-full max-w-[320px] max-[980px]:text-base max-[590px]:text-sm "}>
-                        <div className={"mb-2"}>Cancel Membership</div>
-                        <div>Privacy</div>
-                    </div>
-                    <div className={"text-xl w-full max-w-[320px] max-[980px]:text-base max-[590px]:text-sm "}>
-                        <div className={"mb-2"}>Help Center</div>
-                        <div>Cookie Preferences</div>
-                    </div>
-                    <div className={"text-xl w-full max-w-[320px] max-[980px]:text-base max-[590px]:text-sm "}>
-                        <div className={"mb-2"}>FAQ</div>
-                        <div>Terms of Us</div>
-                    </div>
-                </div>
-
-                    <div className = {"transition-all w-full max-w-[102px] flex flex-col text-white text-xs mt-4"}>
-
-                        <div onClick={()=>setShowLanguageSelector(!showLanguageSelector)} className={` broder-white h-[50px] border-solid border-2 p-0.5 flex   items-center justify-around cursor-pointer ${showLanguageSelector?"rounded-t-md":"rounded-md"}`}>
-                            <FaGlobe className={""}/>
-                            <div>{language}</div>
-                            <div className={`block border-white border-l-2 border-b-2 w-2 h-2 transform   ${showLanguageSelector?"rotate-[135deg] translate-y-0.5":"-rotate-45 -translate-y-0.5"}  `}></div>
-                        </div>
-                        <div  className={`w-full ${showLanguageSelector?"visible":"invisible"} last:rounded-md `}>
-                            <div onClick={(e:any)=>changeLanguage(e)} className={" broder-white h-[40px] border-solid border-2 p-0.5 flex   items-center cursor-pointer "}>
-                                <FaGlobe className={"mr-2"}/>
-                                <div onClick={(e:any)=>changeLanguage(e)}>Ukrainian</div>
-                            </div>
-                            <div onClick={(e:any)=>changeLanguage(e)} className={" broder-white h-[40px] border-solid border-2 p-0.5 flex  items-center cursor-pointer "}>
-                                <FaGlobe className={"mr-2"}/>
-                                <div >Czech</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </footer>
+           <Footer/>
         </>
 
     )

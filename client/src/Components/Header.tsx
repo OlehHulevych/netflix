@@ -1,6 +1,8 @@
 import { FaRegUserCircle } from "react-icons/fa";
 
+
 import { useState, useEffect } from "react";
+
 
 import Sidebar from "./Sidebar.tsx";
 
@@ -27,7 +29,8 @@ export default function Header() {
       }
   },[])
   
-  return (
+
+    return (
     <header className='z-20 fixed font-inter w-full min-w-[800px], max-h-24 h-full  , bg-black bg-opacity-60 min-[320px]:px-1 px-6 py-3 flex justify-between max-[800px]:max-h-16 max-[770px]:max-h-12'>
       <nav className='w-2/3 flex items-center '>
         <img onClick={()=>setOpened(!opened)} src={"/images/Netflix_Logo.png"} alt="" className=" min-[769px]:w-1/6 min-[320px]:absolute z-10 min-[768px]:static min-[768px]:text-sm min-[250px]:w-1/4"  />
@@ -58,3 +61,7 @@ export default function Header() {
     </header>
   )
 }
+
+
+
+

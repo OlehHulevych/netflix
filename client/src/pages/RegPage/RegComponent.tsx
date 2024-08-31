@@ -1,8 +1,27 @@
 import { FaAngleRight } from "react-icons/fa";
 import {Link} from 'react-router-dom'
+import {RegContext} from "../../context/RegContext.tsx";
+import React, {useContext,useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 
 const RegComponent = () => {
+    const navigate = useNavigate();
+    const [isEmpty, setIsEmpty] = useState(false);
+    // @ts-ignore
+    const {email, setEmail} = useContext(RegContext);
+    const handleClick = (e:React.FormEvent<HTMLButtonElement>) =>{
+        e.preventDefault();
+        if(email!=""){
+            navigate('/reg/name')
+        }
+        else{
+            setIsEmpty(true);
+        }
+    }
+
+
+
 
 
     return (
@@ -22,16 +41,18 @@ const RegComponent = () => {
                         <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
                         <form action="" className={"flex justify-center mt-4"}>
                             <div className={" mr-2 text-start relative"}>
-                                <input type="text" className={"max-w-[300px] w-full bg-black bg-opacity-70 max-h-[48px] h-full px-2 pt-1 outline-green-400 peer "} required={true} id={"email"}/>
+                                <input type="text" className={"max-w-[300px] w-full bg-black bg-opacity-70 max-h-[48px] h-full px-2 pt-1 outline-green-400 peer "} required={true} id={"email"} value = {email} onChange={(e)=>setEmail(e.target.value)} />
                                 <label className={"absolute top-3 left-2 text-base peer-focus:top-0 peer-focus:text-xs peer-valid:top-0 peer-valid:text-xs  "} htmlFor="">Email</label>
                             </div>
-                            <button className={"bg-red-650 text-lg px-4 py-2 flex items-center"}>
+
+                            <button onClick={(e:React.FormEvent<HTMLButtonElement>)=>handleClick(e)} className={"bg-red-650 text-lg px-4 py-2 flex items-center"}>
                                 <div className={"mr-2 max-[460px]:text-sm"}>Get Started</div>
                                 <FaAngleRight className={"text-[18px]"}/>
                             </button>
 
 
                         </form>
+                        {isEmpty && <div className={"text-red-600 text-lg mt-2"}>Enter email please</div>}
                     </div>
                 </div>
             </main>

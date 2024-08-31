@@ -20,7 +20,7 @@ import { Request, Response, NextFunction } from 'express';
 
         const movieList = ListMovies.create({userId:user.id})
         const token = jwt.sign({id:user.id, email:user.email, name:user.name}, process.env.JWT_SECRET_KEY, {expiresIn: '168h'} );
-        res.json(token)
+        res.json({token:token})
 
     }
 

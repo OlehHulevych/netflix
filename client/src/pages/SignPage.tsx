@@ -1,9 +1,8 @@
 import { FaEye, FaCheck} from "react-icons/fa";
-import React, {useContext, useState} from "react";
+import React, { useState} from "react";
 import {Link, useNavigate} from 'react-router-dom'
 import Footer from "../Components/Footer.tsx";
 import {login} from '../http/userAPI.ts';
-import {Context} from '../main.tsx'
 
 
 
@@ -13,9 +12,10 @@ export default function SignPage():JSX.Element {
     // @ts-ignore
     const navigate = useNavigate();
     // @ts-ignore
-    const {user} = useContext(Context);
+
     const [email, setEmail] = useState<string | number | readonly string[] | undefined>("");
     const [password, setPassword] = useState<string>("");
+    const [error, setError] = useState<string|null>(null);
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
@@ -23,8 +23,10 @@ export default function SignPage():JSX.Element {
 
             // @ts-ignore
             const data = await login(email, password);
-            user.setUser(user);
-            console.log(user)
+            if(data.message){
+                setError(data.message)
+                console.log(error)
+            }
             navigate('/')
 
         }

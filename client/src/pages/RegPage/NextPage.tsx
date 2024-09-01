@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 import {FaEye} from "react-icons/fa";
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import {RegContext} from "../../context/RegContext.tsx";
 import {registration} from "../../http/userAPI.ts";
-import {Context} from "../../main.tsx";
+
 import {useNavigate} from "react-router-dom";
 
 
@@ -13,17 +13,18 @@ const NextPage = () => {
     const {email,setEmail, name, setName, password, setPassword} = useContext(RegContext);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     // @ts-ignore
-    const {user} = useContext(Context);
 
+    useEffect(()=>{
+        setEmail(localStorage.getItem('email'))
+    },[email])
 
     const onClick = async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         try{
             // @ts-ignore
             const data = await registration(email, name, password);
-            user.setUser(user);
-            user.setIsAuth(true);
-            console.log(user)
+
+
             setEmail("");
             setName("")
             setPassword("")

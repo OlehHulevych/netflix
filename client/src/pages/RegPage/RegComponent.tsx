@@ -3,17 +3,29 @@ import {Link} from 'react-router-dom'
 import {RegContext} from "../../context/RegContext.tsx";
 import React, {useContext,useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {checkEmail} from "../../http/userAPI.ts";
 
 
 const RegComponent = () => {
     const navigate = useNavigate();
     const [isEmpty, setIsEmpty] = useState(false);
+    const [alreadyExist, setAlreadyExist] = useState(false);
     // @ts-ignore
     const {email, setEmail} = useContext(RegContext);
-    const handleClick = (e:React.FormEvent<HTMLButtonElement>) =>{
+    const handleClick = async (e:React.FormEvent<HTMLButtonElement>) =>{
         e.preventDefault();
         if(email!=""){
-            navigate('/reg/name')
+            const result:any = await checkEmail(email);
+
+            if(result.data.error === "User with this email is already exist"){
+
+                setAlreadyExist(true)
+            }
+            else if(result.data.message ==="ok"){
+                localStorage.setItem("email", email)
+                navigate('/reg/name')
+            }
+
         }
         else{
             setIsEmpty(true);
@@ -53,6 +65,7 @@ const RegComponent = () => {
 
                         </form>
                         {isEmpty && <div className={"text-red-600 text-lg mt-2"}>Enter email please</div>}
+                        {alreadyExist && <div className={"text-red-600 text-lg mt-2"}>The user with this email is already exist</div>}
                     </div>
                 </div>
             </main>

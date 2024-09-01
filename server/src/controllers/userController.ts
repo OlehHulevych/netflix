@@ -52,6 +52,20 @@ import { Request, Response, NextFunction } from 'express';
         return res.json({user:user});
     }
 
+
+    async checkOne(req,res){
+        const {email} = req.body;
+        console.log(email)
+        const findUser = await User.findOne({where:{email}});
+        if(findUser){
+            return res.json({error:"User with this email is already exist"})
+        }
+        else if(!findUser){
+            return res.json({message:"ok"});
+        }
+
+    }
+
 }
 
 export default new UserController

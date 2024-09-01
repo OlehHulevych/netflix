@@ -38,7 +38,21 @@ export const logout = ()=>{
     localStorage.removeItem('token');
 }
 
-export const getUserInfo = () => {
-    const token:any = localStorage.getItem('token');
-    console.log(jwtDecode(token));
+export const getUserInfo = async () => {
+    try{
+        const token:any = localStorage.getItem('token');
+        const data:any = jwtDecode(token)
+        const id = data.id;
+        const userInfo = await $host.get(`api/user/${id}`);
+        const user:any = {}
+        user.id = userInfo.data.user.id;
+        user.name = userInfo.data.user.name;
+        user.email = userInfo.data.user.email;
+        return user
+    }
+    catch (e){
+        console.log(e)
+    }
+
+
 }

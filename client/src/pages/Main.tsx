@@ -13,14 +13,7 @@ export default function Main() {
     const {user} = useContext(Context);
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        check().then(()=>{
-            user.setUser(true);
-            user.setIsAuth(true);
-        }).catch(()=>{
-            navigate("/login")
-        })
-    },[])
+
   return (
       <Layout>
         <main className="w-full min-h-screen  ">

@@ -15,7 +15,7 @@ export default class UserStore {
         this.isAuth = bool;
     }
 
-    setUser(user:any) {
+    fsetUser(user:any) {
         this.user = user;
     }
 

@@ -58,6 +58,7 @@ export default function Header() {
         </div>
       </div>
         <Sidebar opened={openedUser}/>
+
     </header>
   )
 }

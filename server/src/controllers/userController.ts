@@ -44,6 +44,14 @@ import { Request, Response, NextFunction } from 'express';
         return res.json({token});
     }
 
+
+    async getOne(req,res){
+        console.log(req.params)
+        const id = req.params.id
+        const user = await User.findOne({where:{id}});
+        return res.json({user:user});
+    }
+
 }
 
 export default new UserController

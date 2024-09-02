@@ -74,7 +74,7 @@ export default function SignPage():JSX.Element {
                                    value = {password} onChange={(e)=>setPassword(e.target.value)} required={true}/>
                             <label htmlFor={"password"}
                                    className={"cursor-text absolute text-black text-base  transform px-1 top-4 left-0 peer-focus:text-[15px] pl-4 peer-focus:-top-0.5  peer-focus:pb-2 peer-valid:text-[15px] peer-valid:-top-0.5 peer-valid:pb-2    "}>Password</label>
-                            <button className={"w-full max-w-[60px]  text-white text-center p-3 bg-gray-500 rounded-r-md max-[1090px]:h-[50px] max-[1090px]:max-w-[50px]"}><FaEye onClick={()=>setShowPassword(!showPassword)} className={"text-black text-2xl"}/></button>
+                            <div className={"w-full max-w-[60px] cursor-pointer  text-white text-center p-4 bg-gray-500 rounded-r-md max-[1090px]:h-[50px] max-[1090px]:max-w-[50px]"}><FaEye onClick={()=>setShowPassword(!showPassword)} className={"text-black text-2xl"}/></div>
                         </div>
                         {error && <div className={"text-red-500 text-lg"}>{error}</div>}
                         <button type={"submit"} className={"bg-red-700 p-5 rounded-md mt-4 text-white text-xl max-[768px]:py-2"}>Sign In</button>

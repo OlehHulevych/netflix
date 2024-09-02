@@ -66,3 +66,8 @@ export const checkEmail = async (email:String)=>{
     const data = await $host.post('api/user/check-email', {email});
     return data;
 }
+
+export const checkName = async(name:String)=>{
+    const data = await $host.post('api/user/check-name', {name});
+    return data
+}

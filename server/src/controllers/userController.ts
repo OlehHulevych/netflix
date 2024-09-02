@@ -66,6 +66,17 @@ import { Request, Response, NextFunction } from 'express';
 
     }
 
+    async checkName(req,res){
+        const {name} = req.body;
+        const findUser = await User.findOne({where:{name}});
+        if(findUser){
+            return res.json({error:"This name is used"})
+        }
+        else{
+            return res.json({message:"ok"});
+        }
+    }
+
 }
 
 export default new UserController

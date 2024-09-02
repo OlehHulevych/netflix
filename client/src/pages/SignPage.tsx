@@ -13,9 +13,11 @@ export default function SignPage():JSX.Element {
     const navigate = useNavigate();
     // @ts-ignore
 
-    const [email, setEmail] = useState<string | number | readonly string[] | undefined>("");
-    const [password, setPassword] = useState<string>("");
+    const [email, setEmail] = useState<string | number | readonly string[] | undefined>(localStorage.getItem("log-email"));
+    // @ts-ignore
+    const [password, setPassword] = useState<string | number | readonly string[] | undefined>(localStorage.getItem("log-password"));
     const [error, setError] = useState<string|null>(null);
+    const [checked, setChecked] = useState<boolean>(false);
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
@@ -27,7 +29,22 @@ export default function SignPage():JSX.Element {
                 setError(data.message)
                 console.log(error)
             }
-            navigate('/')
+            else{
+                if(checked){
+                    // @ts-ignore
+                    localStorage.setItem("log-email", email)
+                    // @ts-ignore
+                    localStorage.setItem("log-password", password )
+                    navigate('/')
+                }
+                else{
+                    navigate('/')
+                    localStorage.removeItem("log-email")
+                    localStorage.removeItem("log-password")
+                }
+
+            }
+
 
         }
         catch(e){
@@ -59,14 +76,14 @@ export default function SignPage():JSX.Element {
                                    className={"cursor-text absolute text-black text-base  transform px-1 top-4 left-0 peer-focus:text-[15px] pl-4 peer-focus:-top-0.5  peer-focus:pb-2 peer-valid:text-[15px] peer-valid:-top-0.5 peer-valid:pb-2    "}>Password</label>
                             <button className={"w-full max-w-[60px]  text-white text-center p-3 bg-gray-500 rounded-r-md max-[1090px]:h-[50px] max-[1090px]:max-w-[50px]"}><FaEye onClick={()=>setShowPassword(!showPassword)} className={"text-black text-2xl"}/></button>
                         </div>
+                        {error && <div className={"text-red-500 text-lg"}>{error}</div>}
                         <button type={"submit"} className={"bg-red-700 p-5 rounded-md mt-4 text-white text-xl max-[768px]:py-2"}>Sign In</button>
                         <div className={"w-full py-4 px-2 flex"} >
-                            <label htmlFor={"check-box"} className={" relative   "}>
-
-                                <input type={"checkbox"} className={" appearance-none w-5 h-5 bg-gray-500 border-1 rounded cursor-pointer  "} id={"check-box-1"} />
+                            <label htmlFor={"check-box"} className={"relative"}>
+                                <input type={"checkbox"} checked={checked}  className={" appearance-none w-5 h-5 bg-gray-500 border-1 rounded cursor-pointer  "} id={"check-box-1"} onChange={()=>setChecked(!checked)}/>
                                 <FaCheck className={" absolute  check-1 top-1 left-1 text-red-700  text-[0px]  opacity-0  "}/>
-
                             </label>
+
                             <div className={"ml-2 text-gray-500 flex justify-between w-full text-sm max-[768px]:text-xs"}>
                                 <p className={"cursor-default"}>Remember me</p>
                                 <p><a href={"#"}>Need help?</a></p>

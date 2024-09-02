@@ -3,8 +3,8 @@ import {FaEye} from "react-icons/fa";
 import React, {useState, useContext, useEffect} from "react";
 import {RegContext} from "../../context/RegContext.tsx";
 import {registration} from "../../http/userAPI.ts";
-
 import {useNavigate} from "react-router-dom";
+import PasswordChecklist from "react-password-checklist";
 
 
 const NextPage = () => {
@@ -63,6 +63,16 @@ const NextPage = () => {
                                className={"cursor-text absolute text-black text-base  transform px-1 top-4 left-0 peer-focus:text-[15px] pl-4 peer-focus:-top-0.5  peer-focus:pb-2 peer-valid:text-[15px] peer-valid:-top-0.5 peer-valid:pb-2    "}>Password</label>
                         <button className={"w-full max-w-[60px]  text-white text-center p-3 bg-gray-500 rounded-r-md max-[1090px]:h-[50px] max-[1090px]:max-w-[50px]"}><FaEye onClick={()=>setShowPassword(!showPassword)} className={"text-black text-2xl"}/></button>
                     </div>
+                    <PasswordChecklist className={"text-white"}
+                        rules={[
+                            "minLength",
+                            "specialChar",
+                            "number",
+                            "capital",
+                        ]}
+                        minLength={6}
+                        value={password}
+                    />
                     <button type={"submit"} className={"w-full bg-red-500 p-5 rounded-md mt-4 text-white text-xl max-[768px]:py-2"}>Finish</button>
                 </form>
             </main>

@@ -18,7 +18,7 @@ export const registration = async(email:String,name:String, password:String)=>{
 export const login = async(email:String, password:String)=> {
     const { data } = await $host.post('api/user/login', { email, password });
     console.log("API Response:", data); // Log the full response
-    if(data.message){
+    if(data.message==="Wrong Password" || data.message==="User not found"){
         return data
     }
     else{

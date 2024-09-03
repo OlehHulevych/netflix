@@ -8,6 +8,7 @@ import BrowsePage from "./pages/BrowsePage.tsx";
 import NextPage from "./pages/RegPage/NextPage.tsx";
 import WelcomePage from "./pages/WelcomePage.tsx";
 import Main from "./pages/Main.tsx";
+import MyListPage from "./pages/MyListPage.tsx";
 
 const AppRouters = () => {
     return (
@@ -20,6 +21,7 @@ const AppRouters = () => {
             <Route path={"/browse"} element={<BrowsePage/>}/>?
             <Route path={"reg/name"} element={<NextPage/>}/>
             <Route path={"/reg/welcome"} element={<WelcomePage/>}/>
+            <Route path = {"/favorites"} element={<MyListPage/>}/>
         </Routes>
 
     );

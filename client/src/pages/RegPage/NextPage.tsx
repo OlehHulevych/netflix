@@ -43,11 +43,15 @@ const NextPage = () => {
             const data = await registration(email, name, password);
 
 
-            setEmail("");
-            setName("")
-            setPassword("")
+                setEmail("");
+                setName("")
+                setPassword("")
 
-            navigate('/')
+                navigate('/')
+
+
+
+
 
         }
         catch(e:any){
@@ -93,7 +97,7 @@ const NextPage = () => {
                         value={password}
                         onChange={(isValid)=>setAllValid(isValid)}
                     />
-                    <button disabled={!allValid} type={"submit"} className={"w-full bg-red-500 p-5 rounded-md mt-4 text-white text-xl max-[768px]:py-2"}>Finish</button>
+                    <button disabled={!allValid || usedName} type={"submit"} className={"w-full bg-red-500 p-5 rounded-md mt-4 text-white text-xl max-[768px]:py-2"}>Finish</button>
                 </form>
             </main>
         </>

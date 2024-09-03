@@ -3,7 +3,7 @@ import userRoute from './userRoute.ts'
 import typeRoute from "./typeRoute.ts";
 import genreRoute from "./genreRoute.ts";
 import movieRoute from "./movieRoute.ts";
-import basketRoute from "./BasketRoute.ts";
+import basketRoute from "./ListMovieRoute.ts";
 
 const router = Router();
 

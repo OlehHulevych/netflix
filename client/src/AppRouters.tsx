@@ -9,6 +9,8 @@ import NextPage from "./pages/RegPage/NextPage.tsx";
 import WelcomePage from "./pages/WelcomePage.tsx";
 import Main from "./pages/Main.tsx";
 import MyListPage from "./pages/MyListPage.tsx";
+import AdminPage from "./pages/AdminPanel/AdminPage.tsx";
+import AddMoviePage from "./pages/AdminPanel/AddMoviePage.tsx";
 
 const AppRouters = () => {
     return (
@@ -22,6 +24,9 @@ const AppRouters = () => {
             <Route path={"reg/name"} element={<NextPage/>}/>
             <Route path={"/reg/welcome"} element={<WelcomePage/>}/>
             <Route path = {"/favorites"} element={<MyListPage/>}/>
+            <Route path = {"/admin/main"} element={<AdminPage/>}/>
+            <Route path={"/admin/add"} element={<AddMoviePage/>}/>
+
         </Routes>
 
     );

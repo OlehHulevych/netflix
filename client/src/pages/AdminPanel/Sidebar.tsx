@@ -69,7 +69,7 @@ const Sidebar = ({opened}:props) => {
             </div>
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <FaPlusCircle className={"mr-2 text-3xl max-[880px]:text-xl"}/>
-                <div className={"text-lg"}><Link to={"/browse"}>Add movies</Link></div>
+                <div className={"text-lg"}><Link to={"/admin/add"}>Add movies</Link></div>
             </div>
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <MdMovieCreation className={"mr-2 text-3xl max-[880px]:text-xl"}/>

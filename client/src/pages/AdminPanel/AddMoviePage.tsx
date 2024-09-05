@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
 const AddMoviePage = () => {
+    const [name, setName] = useState<String|null>(null);
+    const [year, setYear] = useState<String|null>(null);
     return (
         <>
             <header className={"w-full h-4 bg-black-500  z-20 max-[768px]:mb-8"}>
@@ -10,18 +12,18 @@ const AddMoviePage = () => {
                 </Link>
             </header>
         <main className={"w-full min-h-screen flex justify-center items-center overflow-hidden    text-white font-inter"}>
-            <form className={"w-full flex flex-col text-black align-middle max-[600px]:ml-12"} action="">
+            <form className={" flex flex-col text-black align-middle max-[600px]:ml-12"} action="">
                 <div className={"mb-2 align-middle flex flex-col "}>
                     <label  className={"text-white mr-2"}  htmlFor="">Name</label>
-                    <input className={"w-3/4 py-1 px-2 rounded-sm bg-slate-700 outline-none"} type="text"/>
+                    <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-700 outline-none"} type="text"/>
                 </div>
                 <div className={"mb-2  flex flex-col "}>
                     <label className={"text-white mr-2"}  htmlFor="">Year</label>
-                    <input className={"w-3/4 py-1 px-2 rounded-sm bg-slate-700 outline-none"}  type="text"/>
+                    <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-700 outline-none"}  type="text"/>
                 </div>
                 <div className={"mb-2 flex flex-col "}>
                     <label className={"text-white "} htmlFor="">Duration</label>
-                    <input className={"w-3/4 py-1 px-2 rounded-sm bg-slate-700 outline-none"}  type="text"/>
+                    <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-700 outline-none"}  type="text"/>
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"}  htmlFor="type">type</label>

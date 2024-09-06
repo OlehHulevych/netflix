@@ -18,22 +18,17 @@ interface providerProps  {
 
  const MovieProvider:React.FC<providerProps> = ({children})=>{
     const [types,setTypes] = useState<any[]>([]);
-    const [genres, setGenres] = useState<any[]>([]);
+    const [genres, setGenre] = useState<any[]>([]);
 
     return (
         <MovieContext.Provider value={{
             types:types,
             genres:genres,
             setTypes:setTypes,
-            setGenre:setGenres
+            setGenre:setGenre
         }} >
             {children}
         </MovieContext.Provider>
         )
-
-
-
 }
-
-
-export default MovieProvider
+export  {MovieProvider, MovieContext}

@@ -1,9 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Link} from "react-router-dom";
+import {MovieContext} from "../../context/MovieContext.tsx";
+import {fetchTypes, fetchGenres} from "../../http/MovieAPI.ts";
 
 const AddMoviePage = () => {
+    const {types, genres, setTypes, setGenres} = useContext(MovieContext);
     const [name, setName] = useState<String|null>(null);
     const [year, setYear] = useState<String|null>(null);
+    const [description, setDescription] = useState<String|null>(null);
+
+    useEffect(()=>{
+        fetchGenres().then((data)=>setGenres(data));
+        fetchTypes().then((data)=>setTypes(data));
+    },)
     return (
         <>
             <header className={"w-full h-4 bg-black-500  z-20 max-[768px]:mb-8"}>
@@ -23,21 +32,22 @@ const AddMoviePage = () => {
                 </div>
                 <div className={"mb-2 flex flex-col "}>
                     <label className={"text-white "} htmlFor="">Duration</label>
-                    <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-700 outline-none"}  type="text"/>
+                    <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-700 outline-none"}   type="text"/>
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"}  htmlFor="type">type</label>
                     <select className={"py-1 px-2 rounded-sm "} name="type" id="type">
-                        <option value="Movie">Movie</option>
-                        <option value="Tv Shows">Tv shows</option>
+                        {types.map((data:any)=>(
+                            <option key={data.id} value={data.name}>{data.name}</option>
+                        ))}
                     </select>
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"} htmlFor="type">Genre</label>
                     <select className={"py-1 px-2 rounded-sm "}  name="type" id="type">
-                        <option value="Action">Action</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Fantasize">Fantasize</option>
+                        {genres.map((data:any)=>(
+                            <option key={data.id} value={data.name}>{data.name}</option>
+                        ))}
                     </select>
                 </div>
                 <div className={"mb-2"}>

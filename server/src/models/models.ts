@@ -17,7 +17,9 @@ const Movie = sequelize.define('movie', {
     duration:{type:DataTypes.STRING},
     name_img:{type:DataTypes.STRING},
     banner_img:{type:DataTypes.STRING},
-    description:{type:DataTypes.STRING}
+    trailer:{type:DataTypes.STRING},
+    banner_trailer:{type:DataTypes.STRING},
+    description:{type:DataTypes.TEXT}
 })
 
 

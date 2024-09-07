@@ -1,9 +1,10 @@
-import React, {useState, useContext, useEffect} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import {MovieContext} from "../../context/MovieContext.tsx";
-import {fetchTypes, fetchGenres} from "../../http/MovieAPI.ts";
+import {fetchTypes, fetchGenres, createMovie} from "../../http/MovieAPI.ts";
 
 const AddMoviePage = () => {
+    // @ts-ignore
     const {types, genres, setTypes, setGenre} = useContext(MovieContext);
     const [name, setName] = useState<string>("");
     const [year, setYear] = useState<string>("");
@@ -13,6 +14,8 @@ const AddMoviePage = () => {
     const [nameImg, setNameImg] = useState<any>();
     const [movieType, setMovieType] = useState<any>();
     const [movieGenre, setMovieGenre] = useState<any>();
+    const [trailer, setTrailer] = useState<string>("");
+    const [bannerTrailer, setBannerTrailer] = useState<string>("");
 
     useEffect(()=>{
         fetchGenres().then((data)=>setGenre(data));
@@ -25,7 +28,17 @@ const AddMoviePage = () => {
         formData.append('name', name);
         formData.append('year', year);
         formData.append('duration', duration );
-        //formData.append('name_ima')
+        formData.append('typeId', movieType);
+        formData.append('genreId', movieGenre );
+        formData.append('name_image', nameImg);
+        formData.append('banner_image', bannerImg);
+        formData.append('banner_trailer', bannerTrailer);
+        formData.append("trailer", trailer);
+
+
+        const {data} = await createMovie(formData);
+        console.log(data);
+
     }
     return (
         <>
@@ -34,7 +47,7 @@ const AddMoviePage = () => {
                     <img src="/images/Netflix_Logo_1.png" alt="" className={"w-[12%] h-1/8 max-[900px]:w-3/12 cursor-pointer"}/>
                 </Link>
             </header>
-        <main className={"w-full min-h-screen flex justify-center items-center overflow-hidden    text-white font-inter"}>
+        <main onSubmit={()=>addMoviesEvent()} className={"w-full min-h-screen flex justify-center items-center overflow-hidden    text-white font-inter"}>
             <form className={" flex flex-col text-black align-middle max-[600px]:ml-12"} action="">
                 <div className={"mb-2 align-middle flex flex-col "}>
                     <label  className={"text-white mr-2"}  htmlFor="">Name</label>
@@ -47,6 +60,14 @@ const AddMoviePage = () => {
                 <div className={"mb-2 flex flex-col "}>
                     <label className={"text-white "} htmlFor="">Duration</label>
                     <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-800 outline-none"} value={duration} onChange={(e:any)=>setDuration(e.target.value)}   type="text"/>
+                </div>
+                <div className={"mb-2 flex flex-col "}>
+                    <label className={"text-white "} htmlFor="">Trailer</label>
+                    <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-800 outline-none"} value={trailer} onChange={(e:any)=>setTrailer(e.target.value)}   type="text"/>
+                </div>
+                <div className={"mb-2 flex flex-col "}>
+                    <label className={"text-white "} htmlFor="">Banner Trailer</label>
+                    <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-800 outline-none"} value={bannerTrailer} onChange={(e:any)=>setBannerTrailer(e.target.value)}   type="text"/>
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"}  htmlFor="type">type</label>
@@ -76,7 +97,7 @@ const AddMoviePage = () => {
                     <label className={"text-white"} htmlFor="description">Description</label>
                     <textarea className={"rounded-sm bg-slate-800 outline-none max-[768px]:w-3/4"} name="description" id="description" cols="30" rows="10" value={description} onChange={(e:any)=>setDescription(e.target.value)}></textarea>
                 </div>
-                <button className={"bg-red-600 text-3xl py-2 rounded-xl mt-3 font-bold hover:bg-red-700 transition-all duration-500 ease-in-out hover:text-white "}>Add movie</button>
+                <button type={"submit"} className={"bg-red-600 text-3xl py-2 rounded-xl mt-3 font-bold hover:bg-red-700 transition-all duration-500 ease-in-out hover:text-white "}>Add movie</button>
             </form>
         </main>
         </>

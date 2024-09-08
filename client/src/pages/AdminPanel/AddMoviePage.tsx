@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect} from 'react';
+import {useState, useContext, useEffect, ChangeEvent} from 'react';
 import {Link} from "react-router-dom";
 import {MovieContext} from "../../context/MovieContext.tsx";
 import {fetchTypes, fetchGenres, createMovie} from "../../http/MovieAPI.ts";
@@ -10,9 +10,9 @@ const AddMoviePage = () => {
     const [year, setYear] = useState<string>("");
     const [duration, setDuration] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [bannerImg, setBannerImg] = useState<any>();
-    const [nameImg, setNameImg] = useState<any>();
-    const [movieType, setMovieType] = useState<any>();
+    const [bannerImg, setBannerImg] = useState<File|null>();
+    const [nameImg, setNameImg] = useState<File|null>(null);
+    const [movieType, setMovieType] = useState<any>(null);
     const [movieGenre, setMovieGenre] = useState<any>();
     const [trailer, setTrailer] = useState<string>("");
     const [bannerTrailer, setBannerTrailer] = useState<string>("");
@@ -30,15 +30,39 @@ const AddMoviePage = () => {
         formData.append('duration', duration );
         formData.append('typeId', movieType);
         formData.append('genreId', movieGenre );
+        // @ts-ignore
         formData.append('name_image', nameImg);
+        // @ts-ignore
         formData.append('banner_image', bannerImg);
         formData.append('banner_trailer', bannerTrailer);
         formData.append("trailer", trailer);
+        console.log(formData)
+        const result = await createMovie(formData);
+
+        console.log(result)
 
 
         const {data} = await createMovie(formData);
         console.log(data);
 
+    }
+
+    const updateFileNameImage = (event:ChangeEvent<HTMLInputElement>) =>{
+        if(event.target.files && event.target.files[0]){
+            const file = event.target.files?.[0];
+            console.log(file);
+            setNameImg(file);
+
+        }
+    }
+
+    const updateFileBannerImage = (event:ChangeEvent<HTMLInputElement>) =>{
+        if(event.target.files && event.target.files[0]){
+            const file = event.target.files?.[0];
+            console.log(file);
+            setBannerImg(file);
+
+        }
     }
     return (
         <>
@@ -87,15 +111,15 @@ const AddMoviePage = () => {
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"} htmlFor="">Banner image</label>
-                    <input className={"py-1 px-2 rounded-sm "} value={bannerImg}  onChange={(e:any)=>setBannerImg(e.target.files[0])}  type="file" id={"Banner image"}/>
+                    <input className={"py-1 px-2 rounded-sm "}  onChange={(e:ChangeEvent<HTMLInputElement>)=>updateFileBannerImage(e)}   type="file" id={"Banner image"}/>
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"} htmlFor="description">Name image</label>
-                    <input className={"py-1 px-2 rounded-sm "} value={nameImg} onChange={(e:any)=>setNameImg(e.target.files[0])} type="file" id={"Name image "}/>
+                    <input className={"py-1 px-2 rounded-sm "}  onChange={(e:ChangeEvent<HTMLInputElement>)=>updateFileNameImage(e)} type="file" id={"Name image "}/>
                 </div>
                 <div className={"mb-2 flex flex-col"}>
                     <label className={"text-white"} htmlFor="description">Description</label>
-                    <textarea className={"rounded-sm bg-slate-800 outline-none max-[768px]:w-3/4"} name="description" id="description" cols="30" rows="10" value={description} onChange={(e:any)=>setDescription(e.target.value)}></textarea>
+                    <textarea className={"rounded-sm bg-slate-800 resize-none outline-none max-[768px]:w-3/4"} name="description" id="description"   value={description} onChange={(e:any)=>setDescription(e.target.value)}></textarea>
                 </div>
                 <button type={"submit"} className={"bg-red-600 text-3xl py-2 rounded-xl mt-3 font-bold hover:bg-red-700 transition-all duration-500 ease-in-out hover:text-white "}>Add movie</button>
             </form>

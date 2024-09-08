@@ -6,7 +6,9 @@ import path from 'path'
 class MovieController{
     async create(req, res){
         const {name, year, duration, description, typeId, genreId, trailer, banner_trailer } = req.body;
+        console.log(req.files)
         const {name_image, banner_image} = req.files;
+
         let name_image_filename = uuid.v4()+".jpg";
         let banner_image_filename = uuid.v4()+".jpg";
         name_image.mv(path.resolve(__dirname, '..','..', 'static', name_image_filename))

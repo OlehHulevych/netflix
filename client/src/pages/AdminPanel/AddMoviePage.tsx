@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect, ChangeEvent} from 'react';
+import React, {useState, useContext, useEffect, ChangeEvent} from 'react';
 import {Link} from "react-router-dom";
 import {MovieContext} from "../../context/MovieContext.tsx";
 import {fetchTypes, fetchGenres, createMovie} from "../../http/MovieAPI.ts";
@@ -10,7 +10,7 @@ const AddMoviePage = () => {
     const [year, setYear] = useState<string>("");
     const [duration, setDuration] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [bannerImg, setBannerImg] = useState<File|null>();
+    const [bannerImg, setBannerImg] = useState<File|null>(null);
     const [nameImg, setNameImg] = useState<File|null>(null);
     const [movieType, setMovieType] = useState<any>(null);
     const [movieGenre, setMovieGenre] = useState<any>();
@@ -23,7 +23,8 @@ const AddMoviePage = () => {
     },[])
 
 
-    const addMoviesEvent = async ()=>{
+    const addMoviesEvent = async (e:React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault();
         const formData = new FormData();
         formData.append('name', name);
         formData.append('year', year);
@@ -36,31 +37,30 @@ const AddMoviePage = () => {
         formData.append('banner_image', bannerImg);
         formData.append('banner_trailer', bannerTrailer);
         formData.append("trailer", trailer);
-        console.log(formData)
+        for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]);
+        }
         const result = await createMovie(formData);
 
-        console.log(result)
 
 
-        const {data} = await createMovie(formData);
-        console.log(data);
+
+
+
 
     }
 
     const updateFileNameImage = (event:ChangeEvent<HTMLInputElement>) =>{
-        if(event.target.files && event.target.files[0]){
-            const file = event.target.files?.[0];
-            console.log(file);
-            setNameImg(file);
-
-        }
+       // @ts-ignore
+        setNameImg(event.target.files[0]);
+        console.log(nameImg)
     }
 
     const updateFileBannerImage = (event:ChangeEvent<HTMLInputElement>) =>{
         if(event.target.files && event.target.files[0]){
             const file = event.target.files?.[0];
-            console.log(file);
             setBannerImg(file);
+            console.log(bannerImg)
 
         }
     }
@@ -71,8 +71,8 @@ const AddMoviePage = () => {
                     <img src="/images/Netflix_Logo_1.png" alt="" className={"w-[12%] h-1/8 max-[900px]:w-3/12 cursor-pointer"}/>
                 </Link>
             </header>
-        <main onSubmit={()=>addMoviesEvent()} className={"w-full min-h-screen flex justify-center items-center overflow-hidden    text-white font-inter"}>
-            <form className={" flex flex-col text-black align-middle max-[600px]:ml-12"} action="">
+        <main  className={"w-full min-h-screen flex justify-center items-center overflow-hidden    text-white font-inter"}>
+            <form onSubmit={(e:React.FormEvent<HTMLFormElement>)=>addMoviesEvent(e)} className={" flex flex-col text-black align-middle max-[600px]:ml-12"} action="">
                 <div className={"mb-2 align-middle flex flex-col "}>
                     <label  className={"text-white mr-2"}  htmlFor="">Name</label>
                     <input className={"w-full max-w-[500px] py-1 px-2 rounded-sm bg-slate-800 outline-none"} value={name} onChange= {(e:any)=>setName(e.target.value)} type="text"/>
@@ -95,17 +95,17 @@ const AddMoviePage = () => {
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"}  htmlFor="type">type</label>
-                    <select className={"py-1 px-2 rounded-sm "} name="type" id="type">
+                    <select onChange={(e:any)=>setMovieType(e.target.value)} value={movieType} className={"py-1 px-2 rounded-sm "} name="type" id="type">
                         {types.map((data:any)=>(
-                            <option key={data.id} onClick={()=>setMovieType(data)} value={data.name}>{data.name}</option>
+                            <option key={data.id}  value={data.name}>{data.name}</option>
                         ))}
                     </select>
                 </div>
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"} htmlFor="type">Genre</label>
-                    <select className={"py-1 px-2 rounded-sm "}  name="type" id="type">
+                    <select onChange={(e:any)=>setMovieGenre(e.target.value)} value={movieGenre} className={"py-1 px-2 rounded-sm "}  name="type" id="type">
                         {genres.map((data:any)=>(
-                            <option key={data.id} onClick={()=>setMovieGenre(data)} value={data.name}>{data.name}</option>
+                            <option key={data.id} value={data.name}>{data.name}</option>
                         ))}
                     </select>
                 </div>
@@ -116,6 +116,7 @@ const AddMoviePage = () => {
                 <div className={"mb-2"}>
                     <label className={"text-white mr-2"} htmlFor="description">Name image</label>
                     <input className={"py-1 px-2 rounded-sm "}  onChange={(e:ChangeEvent<HTMLInputElement>)=>updateFileNameImage(e)} type="file" id={"Name image "}/>
+
                 </div>
                 <div className={"mb-2 flex flex-col"}>
                     <label className={"text-white"} htmlFor="description">Description</label>

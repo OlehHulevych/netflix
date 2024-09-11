@@ -14,6 +14,6 @@ export const fetchGenres = async ()=>{
 
 
 export const createMovie = async (device:any)=>{
-    const {data} = await $authHost.post('api/movie/', {device});
+    const {data} = await $authHost.post('api/movie/', device);
     return data;
 }

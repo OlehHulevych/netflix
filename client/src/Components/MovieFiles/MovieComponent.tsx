@@ -1,8 +1,13 @@
 import {FaPlay} from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import {useParams} from "react-router-dom";
-import data from './movies.json'
+import {useEffect, useState} from "react";
+import {getMovieOne} from "../../http/MovieAPI.ts";
+import ReactPlayer from "react-player";
+import {Element, Link} from 'react-scroll'
+
 import Footer from "../Footer.tsx";
+
 
 
 // interface movieType {
@@ -15,34 +20,47 @@ import Footer from "../Footer.tsx";
 // }
 
 const MovieComponent = () => {
+    const [movie, setMovie] = useState<any>();
+
+
     const{id} = useParams();
-    const movie:any = data.find((item:any)=>item.id==id);
+    useEffect(()=>{
+        getMovieOne(id).then((data)=>{
+            setMovie(data)
+        })
+    },[]);
+
+
 
     return (
         <>
         <main className={"w-full font-inter"}>
-        <div className={`  relative bg-[url(./images/Banners/${movie.banner_name_image}.png)] bg-cover bg-center   w-full h-full min-h-screen  flex flex-col max-[470px]:h-[400px]`} >
-            <img src={`/images/Banners/${movie.banner_name_image}.png`} alt="" className={" absolute w-full max-h-[800px] h-full object-fill max-[570px]:h-[400px] "}/>
+        <div className={`  relative bg-[url(${import.meta.env.VITE_API_URL +"banner_images/"+movie?.banner_img}] bg-cover bg-center   w-full h-full min-h-screen  flex flex-col max-[470px]:h-[400px]`} >
+            <img src={import.meta.env.VITE_API_URL +"banner_images/"+movie?.banner_img} alt="" className={" absolute w-full max-h-[800px] h-full object-fill max-[570px]:h-[400px] "}/>
             {/*content*/}
             <div className={`   overflow-hidden absolute bg-custom-gradient box-shadow-xl w-1/2 h-full top-0 left-0 flex flex-col pl-8 flex justify-center  z-10 max-[768px]:w-full  max-[768px]:items-center  max-[768px]:justify-start max-[768px]:pt-10  `}>
                 <div className={" "}>
                 <div className={"max-[769px]:flex max-[769px]:justify-center pl-4 "}>
-                    <img  src={`/images/name_image/${movie.banner_name_image}.png`} alt="" className=' max-w-[500px] max-h-[250px] w-full -ml-10 max-[900px]:max-w-[350px] max-[900px]:-ml-5 max-[768px]:text-center max-[600px]:max-w-[250px] max-[530px]:max-w-[175px]   ' />
+                    <img  src={import.meta.env.VITE_API_URL+"name_images/"+movie?.name_img} alt="" className=' max-w-[500px] max-h-[250px] w-full -ml-10 max-[900px]:max-w-[350px] max-[900px]:-ml-5 max-[768px]:text-center max-[600px]:max-w-[250px] max-[530px]:max-w-[175px]   ' />
                 </div>
-                <div className={"text-4xl font-bold text-white my-2 capitalize max-[900px]:text-2xl"}>{movie.name}</div>
+                <div className={"text-4xl font-bold text-white my-2 capitalize max-[900px]:text-2xl"}>{movie?.name}</div>
                 <div>
                     <p className={'font-inter text-white  text-xl max-w-[500px] max-[950px]:text-base max-[600px]: text-sm max-[530px]:text-xs max-[530px]:max-w-[350px] max-[380px]:text-[10px]'}>
-                        {movie.description}
+                        {movie?.description}
                     </p>
                     <div className={"flex  mt-4 text-xl text-gray-500 capitalize max-[900px]:text-lg"}>
-                        {movie.year} | {movie.genre} | {movie.duration}
+                        {movie?.year} | {movie?.genre.name} | {movie?.duration}
                     </div>
                 </div>
                 <div className={'text-white pt-5 max-[768px]:text-center '}>
+                    <Link to ="movie" spy = {true} smooth = {true} offset={90} duration = {500}>
                     <button className={'inline-flex align-top justify-center w-[157px] items-center text-black text-xl font-bold max-[950px]:max-h-[50px]   h-[75px]  bg-white mr-10 rounded-sm group hover:bg-opacity-30 hover:text-white max-[900px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px] max-[768px]:p-2 max-[600px]:text-base  max-[530px]:max-h-[40px]'}>
-                        <FaPlay className={'text-3xl mr-1 max-[768px]:text-6xl max-[530px]:text-xl '}/>
-                        Play
+
+                            <FaPlay className={'text-3xl mr-1 max-[768px]:text-6xl max-[530px]:text-xl '}/>
+                            Play
+
                     </button>
+                    </Link>
                     <button className={'inline-flex align-top justify-center  w-[157px] items-center text-black text-xl font-bold max-[950px]:max-h-[50px]   h-[75px]  bg-white mr-10 rounded-sm group hover:bg-opacity-30 hover:text-white max-[900px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px] max-[768px]:p-2 max-[600px]:text-base max-[530px]:p-0.5 max-[530px]:max-h-[40px]'}>
                         <div className={'text-6xl mr-1 font-thin max-[768px]:text-3xl '}><CiCirclePlus/></div>
                         <div>Add</div>
@@ -54,22 +72,11 @@ const MovieComponent = () => {
 
             </div>
         </div>
-            <div className = {"w-full  relative overflow-hidden  text-white    min-h-screen max-[550px] "}>
-                <iframe
-
-                    className={" w-1/2 h-1/2 top-1/3 left-0 top-0  right-0 absolute m-auto max-[769px]:w-3/4 max-[550px]:mx-auto max-[550px]:m-4 max-[550px]:-top-4 "}
-                    src="blob:https://ashdi.vip/5d4b3557-84e2-473c-8281-77fed07ad125"
-                    title="YouTube video player"
-
-                    frameBorder="0"
-                    allow="accelerometer;
-                      clipboard-write;
-                      encrypted-media;
-                      gyroscope;
-                      picture-in-picture;
-                      web-share" allowFullScreen></iframe>
-                
-            </div>
+            <Element name={"movie"}>
+                <div className = {"w-full flex justify-center items-center  relative overflow-hidden  text-white    min-h-screen max-[550px] "}>
+                    <ReactPlayer width={"1000px"} height={500} url={movie?.trailer}/>
+                </div>
+            </Element>
         </main>
             <Footer/>
         </>

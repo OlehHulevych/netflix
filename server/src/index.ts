@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import dotenv from "dotenv"
 const model = require('./models/models.ts')
+import path from "path";
 
 import cors from 'cors'
 import router from './routes/index.ts'
@@ -15,6 +16,8 @@ const app = express();
 
 app.use(cors())
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../static')))
+
 app.use(fileUpload({}));
 app.use('/api', router)
 

@@ -17,3 +17,18 @@ export const createMovie = async (device:any)=>{
     const {data} = await $authHost.post('api/movie/', device);
     return data;
 }
+
+export const getMovies = async () =>{
+    const {data} = await $authHost.get('api/movie/');
+    return data;
+}
+
+export const getMovieOne = async (id:any) =>{
+    const {data} = await $authHost.get(`api/movie/${id}`);
+    return data;
+}
+
+export const getGenreOne = async(id:any)=>{
+    const {data} = await $authHost.get(`api/genre/${id}`);
+    return data;
+}

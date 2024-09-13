@@ -1,30 +1,42 @@
 import MovieCaroseul from "./MovieFiles/MovieCaroseul.tsx";
-import movies from "./MovieFiles/movies.json"
-interface movieType{
-    id: Number,
-    name: String,
-    year: Number,
-    genre: String,
-    preview_image: String,
-    banner_name_image:String
-}
+
+import {useEffect, useContext} from "react";
+import {MovieContext} from "../context/MovieContext.tsx";
+import {getMovies, fetchGenres, fetchTypes} from "../http/MovieAPI.ts";
+
+
+
 const Catalog = () => {
-    const sortFilms = (genre:String)=>{
-        return movies.filter((movie:movieType)=>movie.genre==genre)
+    //@ts-ignore
+    const {setMovies, movies, types, setTypes, genres, setGenre} = useContext(MovieContext);
+
+
+    useEffect(()=>{
+        getMovies().then((data)=>setMovies(data));
+        fetchGenres().then((data)=>setGenre(data));
+        fetchTypes().then((data)=>setTypes(data));
+
+    },[])
+    const sortFilms = (genre:any)=>{
+
+        const newMovies =  movies.filter((movie:any)=>movie.genreId===genre.id)
+        console.log(newMovies)
+        return newMovies
     }
     return (
         <main className={"w-full text-white font-inter px-6 "}>
             <h1 className={"text-3xl font-bold mb-4"}>Movies</h1>
-            <h2 className={"text-2xl font-bold mb-2"}>Comedy</h2>
-            <div className={"w-full  flex justify-center text-center"}>
-                <MovieCaroseul movies={sortFilms("comedy")}/>
-            </div><h2 className={"text-2xl font-bold mb-2"}>Action</h2>
-            <div className={"w-full  flex justify-center text-center"}>
-                <MovieCaroseul movies={sortFilms("action")}/>
-            </div><h2 className={"text-2xl font-bold mb-2"}>Fantazie</h2>
-            <div className={"w-full  flex justify-center text-center"}>
-                <MovieCaroseul movies={sortFilms("fantazie")}/>
-            </div>
+
+
+            {genres.map((item:any)=>(
+                <>
+                    <h2 className={"text-2xl font-bold mb-2"}>{item.name}</h2>
+                    <div className={"w-full  flex justify-center text-center"}>
+                        <MovieCaroseul movies={sortFilms(item)}/>
+                    </div>
+                </>
+            ))}
+
         </main>
     );
 };

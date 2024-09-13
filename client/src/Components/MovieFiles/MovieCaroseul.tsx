@@ -4,16 +4,9 @@ import Carousel from "react-multi-carousel";
 import MovieItem from "./MovieItem.tsx";
 import "react-multi-carousel/lib/styles.css";
 
-interface movieType{
-    id: Number,
-    name: String,
-    year: Number,
-    genre: String,
-    preview_image: String,
-    banner_name_image:String
-}
+
 interface props {
-    movies:Array<movieType>
+    movies:any[]
 
 }
 
@@ -42,8 +35,8 @@ const MovieCaroseul = ({movies}:props) => {
     return (
         <div className={"w-full text-center"}>
             <Carousel responsive={responsive}>
-                {movies.map((movie:movieType)=>(
-                    <MovieItem name={movie.name} preview_image={movie.preview_image} id={movie.id} />
+                {movies.map((movie:any)=>(
+                    <MovieItem name={movie.name} preview_image={movie.banner_img} id={movie.id} />
                 ))}
             </Carousel>
         </div>

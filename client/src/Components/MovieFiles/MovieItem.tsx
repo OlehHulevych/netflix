@@ -7,16 +7,19 @@ interface props {
 }
 const MovieItem = ({name, preview_image, id}:props) => {
 
+
+
     return (
         <>
         <Link to={`/movies/${id}`}>
             <div className={"text-center mr-4 cursor-pointer "}>
-                <img className={"w-[341px] h-[142px] "} src={`/images/MovieCards/${preview_image}.png`} alt=""/>
+                <img className={"w-[341px] h-[142px] "} src={import.meta.env.VITE_API_URL +"banner_images/"+ preview_image} alt=""/>
                 <div className={"mt-2"}>{name}</div>
             </div>
         </Link>
         </>
     );
 };
+
 
 export default MovieItem;

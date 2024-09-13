@@ -8,6 +8,12 @@ class GenreController{
         return res.json(newType)
     }
 
+    async getOne(req,res){
+        const {id} = req.params;
+        const selectedGenre = await Genre.findOne({where:{id}});
+        return res.json(selectedGenre);
+    }
+
     async getAll(req,res){
         const types = await Genre.findAll();
         return res.json(types);

@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getMovieOne} from "../../http/MovieAPI.ts";
 import ReactPlayer from "react-player";
+
 import {Element, Link} from 'react-scroll'
 
 import Footer from "../Footer.tsx";
@@ -23,14 +24,31 @@ const MovieComponent = () => {
     const [movie, setMovie] = useState<any>();
 
 
+
     const{id} = useParams();
     useEffect(()=>{
         getMovieOne(id).then((data)=>{
+
             setMovie(data)
         })
     },[]);
 
 
+    const FormatDuration = (duration:string) => {
+        if (duration) {
+            const [hour, min] = duration.split(":");
+            let formattedDuration = "";
+            if (movie.type.name === "Movie") {
+                formattedDuration = `${hour}h ${min}m`
+            } else {
+                formattedDuration = duration + " seasons"
+            }
+            return formattedDuration
+
+
+        }
+
+    }
 
     return (
         <>
@@ -49,7 +67,7 @@ const MovieComponent = () => {
                         {movie?.description}
                     </p>
                     <div className={"flex  mt-4 text-xl text-gray-500 capitalize max-[900px]:text-lg"}>
-                        {movie?.year} | {movie?.genre.name} | {movie?.duration}
+                        {movie?.year} | {movie?.genre.name} | {FormatDuration(movie?.duration)}
                     </div>
                 </div>
                 <div className={'text-white pt-5 max-[768px]:text-center '}>

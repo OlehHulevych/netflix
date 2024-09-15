@@ -46,13 +46,15 @@ const MovieListItem = sequelize.define("movieListItem",{
 User.hasOne(ListMovies);
 ListMovies.belongsTo(User);
 
-ListMovies.hasMany(MovieListItem);
+ListMovies.hasMany(MovieListItem,{ as: 'MovieListItems' });
 MovieListItem.belongsTo(ListMovies);
 
 Type.hasMany(Movie);
 Movie.belongsTo(Type);
 Genre.hasMany(Movie);
 Movie.belongsTo(Genre);
+MovieListItem.belongsTo(Movie);
+Movie.hasMany(MovieListItem,{ as: 'MovieListItems' });
 
 export {
     User,

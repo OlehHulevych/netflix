@@ -7,4 +7,5 @@ router.post('/', MovieController.create);
 router.get('/', MovieController.getAll);
 router.get('/:id', MovieController.getOne);
 
+
 export default router;

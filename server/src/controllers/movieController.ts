@@ -1,4 +1,4 @@
-import {Movie, Genre} from '../models/models.ts'
+import {Movie, Genre, Type, MovieListItem} from '../models/models.ts'
 import * as uuid from 'uuid';
 import path from 'path'
 
@@ -28,7 +28,9 @@ class MovieController{
         const {id} = req.params;
         const movie = await Movie.findOne({
             where:{id},
-            include: [{model: Genre, as: 'genre'}]
+            include: [{model: Genre, as: 'genre',},
+                {model:Type, as:'type'}],
+
         });
         return res.json(movie);
     }

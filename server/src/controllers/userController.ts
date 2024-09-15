@@ -65,7 +65,8 @@ import { Request, Response, NextFunction } from 'express';
         try{
             console.log(req.params)
             const id = req.params.id
-            const user = await User.findOne({where:{id}});
+            const user = await User.findOne({where:{id},
+            include:[{model:ListMovies, as:'ListMovies'}]});
             return res.json({user:user});
         }
         catch(e){

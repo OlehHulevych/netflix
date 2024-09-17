@@ -46,6 +46,7 @@ const NextPage = () => {
                 setEmail("");
                 setName("")
                 setPassword("")
+                localStorage.removeItem('email')
 
                 navigate('/')
 

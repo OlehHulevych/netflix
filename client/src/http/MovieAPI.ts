@@ -32,3 +32,8 @@ export const getGenreOne = async(id:any)=>{
     const {data} = await $authHost.get(`api/genre/${id}`);
     return data;
 }
+
+export const getListById = async(id:any) =>{
+    const {data} = await $authHost.get(`api/list-movie/user/${id}`);
+    return data;
+}

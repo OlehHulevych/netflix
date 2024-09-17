@@ -20,6 +20,7 @@ import { Request, Response, NextFunction } from 'express';
             const user:any = await User.create({email, name,role, password:cryptedPassword});
 
             const movieList = await ListMovies.create({userId:user.id})
+
             const token = jwt.sign({id:user.id, email:user.email, name:user.name}, process.env.JWT_SECRET_KEY, {expiresIn: '168h'} );
             res.json({token:token})
         }
@@ -65,8 +66,7 @@ import { Request, Response, NextFunction } from 'express';
         try{
             console.log(req.params)
             const id = req.params.id
-            const user = await User.findOne({where:{id},
-            include:[{model:ListMovies, as:'ListMovies'}]});
+            const user = await User.findOne({where:{id}})
             return res.json({user:user});
         }
         catch(e){

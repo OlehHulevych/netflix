@@ -23,6 +23,21 @@ import {ListMovies, MovieListItem} from "../models/models.ts";
         }
     }
 
+    async getOneByUser(req,res){
+        try{
+            const {id} = req.params;
+            const foundList = await ListMovies.findOne({where:{userId:id},
+                include:[{model:MovieListItem, as:'MovieListItems'}]
+            });
+            return res.json(foundList)
+        }
+        catch (e){
+            return res.status(500).json(e);
+        }
+
+
+    }
+
 
     async createListMovieItem (req,res){
         try{

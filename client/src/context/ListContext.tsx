@@ -1,6 +1,8 @@
 import React, {createContext, ReactNode, useState} from "react";
 
 
+
+
 type ListContextType = {
     movies:any[],
     listId:number,
@@ -8,7 +10,7 @@ type ListContextType = {
     setListId:React.Dispatch<React.SetStateAction<number>>
 }
 
-const ListContext = createContext<ListContextType|String>("");
+export const ListContext = createContext<ListContextType|String>("");
 
 
 interface providerProps  {
@@ -16,9 +18,13 @@ interface providerProps  {
 }
 
 // @ts-ignore
-const ListProvider:React.FC<providerProps> = ({children}) => {
+export const ListProvider:React.FC<providerProps> = ({children}) => {
     const [movies, setMovies] = useState<any[]>([]);
     const [listId, setListId] = useState<number>(0);
+    // @ts-ignore
+
+
+
 
 
     return (
@@ -33,5 +39,5 @@ const ListProvider:React.FC<providerProps> = ({children}) => {
     );
 };
 
-export default ListProvider;
+
 

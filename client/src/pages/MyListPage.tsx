@@ -1,6 +1,6 @@
 import Layout from "../Layout.tsx";
-
 import MovieItem from "../Components/MovieFiles/MovieItem.tsx";
+
 
 
 const MyListPage = () => {

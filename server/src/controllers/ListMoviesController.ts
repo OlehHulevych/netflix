@@ -42,14 +42,38 @@ import {ListMovies, MovieListItem} from "../models/models.ts";
     async createListMovieItem (req,res){
         try{
             const {movieId, listId} = req.body;
-            const result = await MovieListItem.create({movieId:movieId , ListMovieId:listId });
-            return res.json(result);
+            const listMovies:any = await ListMovies.findOne({where:{id:listId}})
+
+            const listItemCheck:any = await MovieListItem.findOne({where:{movieId:movieId}})
+            console.log(listItemCheck)
+            if(listItemCheck.listId === listMovies.id){
+                res.json({message:"already exist"})
+
+            }
+            else{
+                const result = await MovieListItem.create({movieId:movieId , ListMovieId:listMovies.id });
+                return res.json(result);
+            }
+
         }
         catch (e){
+            console.error(e)
             return res.status(500).json(e);
         }
 
 
+    }
+
+    async checkIfExistInList(req,res){
+        const {listId,movieId} = req.params;
+        const findOne:any = await MovieListItem.findOne({where:{listId:listId},})
+
+        if(findOne.movieId===movieId){
+            return res.json({message:"Already exist"})
+        }
+        else{
+            return res.json({message:"ok"});
+        }
     }
  }
 

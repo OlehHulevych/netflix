@@ -6,7 +6,8 @@ import {createContext} from "react";
 import UserStore from "./store/UserStore.ts";
 import {RegProvider} from "./context/RegContext.tsx";
 import {MovieProvider} from "./context/MovieContext.tsx";
-'
+import {ListProvider} from "./context/ListContext.tsx";
+
 
 type ContextType = {
     user: UserStore | null;
@@ -19,7 +20,7 @@ export const Context = createContext<ContextType|null>(null);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-
+        <ListProvider>
       <MovieProvider>
       <RegProvider>
     <Context.Provider value={{
@@ -31,6 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </Context.Provider>
       </RegProvider>
       </MovieProvider>
+        </ListProvider>
 
   </React.StrictMode>
 )

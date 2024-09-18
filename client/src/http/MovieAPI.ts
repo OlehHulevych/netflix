@@ -37,3 +37,13 @@ export const getListById = async(id:any) =>{
     const {data} = await $authHost.get(`api/list-movie/user/${id}`);
     return data;
 }
+
+export const addMovieToList = async (movieId:any, listId:any)=>{
+    const {data} = await $authHost.post('api/list-movie/', {movieId, listId});
+    return data;
+}
+
+export const checkMovieExist = async (movieId:any, listId:any)=>{
+    const {data} = await $authHost.post('api/list-movie/check', {movieId, listId})
+    return data;
+}

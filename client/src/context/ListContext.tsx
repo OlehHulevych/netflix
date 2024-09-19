@@ -1,13 +1,18 @@
-import React, {createContext, ReactNode, useState} from "react";
+import React, {createContext, ReactNode, useEffect, useState} from "react";
+import {jwtDecode} from "jwt-decode";
+import {getListById} from "../http/MovieAPI.ts";
 
 
 
 
 type ListContextType = {
-    movies:any[],
+    moviesOfList:any[],
     listId:number,
-    setMovies:React.Dispatch<React.SetStateAction<any[]>>,
+    listInfo:any;
+    setMoviesOfList:React.Dispatch<React.SetStateAction<any[]>>,
     setListId:React.Dispatch<React.SetStateAction<number>>
+    setListInfo:React.Dispatch<React.SetStateAction<any[]>>
+
 }
 
 export const ListContext = createContext<ListContextType|String>("");
@@ -19,8 +24,40 @@ interface providerProps  {
 
 // @ts-ignore
 export const ListProvider:React.FC<providerProps> = ({children}) => {
-    const [movies, setMovies] = useState<any[]>([]);
+    const [moviesOfList, setMoviesOfList] = useState<any[]>([]);
     const [listId, setListId] = useState<number>(0);
+    const [listInfo, setListInfo] = useState<any>([]);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+
+
+        if (token) {
+            try {
+                const decodedToken: any = jwtDecode(token);
+                console.log("Decoded Token: ", decodedToken);
+
+                getListById(decodedToken.id)
+                    .then((data) => {
+                        console.log("Data received: ", data);
+                        setListInfo(data); // Update the listInfo state
+                        setListId(data.id); // Update the listId state
+                    })
+                    .catch((err) => {
+                        console.error("Error fetching list by ID: ", err);
+                    });
+            } catch (err) {
+                console.error("Error decoding token: ", err);
+            }
+        } else {
+            console.log("No token found.");
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log("Updated listInfo: ", listInfo);
+    }, [listInfo]);
+
     // @ts-ignore
 
 
@@ -29,10 +66,12 @@ export const ListProvider:React.FC<providerProps> = ({children}) => {
 
     return (
         <ListContext.Provider value={{
-            movies:movies,
+            moviesOfList:moviesOfList,
             listId:listId,
+            listInfo:listInfo,
             setListId:setListId,
-            setMovies:setMovies
+            setMoviesOfList:setMoviesOfList,
+            setListInfo:setListInfo
         }}>
             {children}
         </ListContext.Provider>

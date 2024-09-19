@@ -11,14 +11,16 @@ import {getListById} from "../http/MovieAPI.ts";
 export default function Main() {
     // @ts-ignore
 
-    const {listId, setListId} = useContext(ListContext);
+    const {listId, setListId, setListInfo, listInfo} = useContext(ListContext);
     useEffect(()=>{
         const token = localStorage.getItem('token')
         if(token){
             const decodedToken:any = jwtDecode(token)
             getListById(decodedToken.id).then((data)=>{
                 console.log(data)
-                setListId(data.id)
+                console.log(listInfo)
+                setListInfo(data);
+                setListId(data.id);
             })
         }
         else{

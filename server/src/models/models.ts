@@ -53,7 +53,10 @@ Type.hasMany(Movie);
 Movie.belongsTo(Type);
 Genre.hasMany(Movie);
 Movie.belongsTo(Genre);
-MovieListItem.belongsTo(Movie);
+MovieListItem.belongsTo(Movie,{
+    foreignKey: 'movieId',
+    as: 'Movie'
+});
 Movie.hasMany(MovieListItem,{ as: 'MovieListItems' });
 
 export {

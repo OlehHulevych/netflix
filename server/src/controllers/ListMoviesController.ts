@@ -1,4 +1,4 @@
-import {ListMovies, MovieListItem} from "../models/models.ts";
+import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
 
  class ListMoviesController{
     async getAll(req,res){
@@ -15,7 +15,7 @@ import {ListMovies, MovieListItem} from "../models/models.ts";
         try{
             const {id} = req.params;
             const list = await ListMovies.findOne({where:{id},
-            include:[{model:MovieListItem, as:'MovieListItems'}]});
+            include:[{model:MovieListItem, as:'MovieListItems', include:[{model:Movie, as:'Movie'}]}]});
             return res.json(list);
         }
         catch(e){
@@ -27,8 +27,7 @@ import {ListMovies, MovieListItem} from "../models/models.ts";
         try{
             const {id} = req.params;
             const foundList = await ListMovies.findOne({where:{userId:id},
-                include:[{model:MovieListItem, as:'MovieListItems'}]
-            });
+                include:[{model:MovieListItem, as:'MovieListItems', include:[{model:Movie, as:'Movie'}]}]});
             return res.json(foundList)
         }
         catch (e){
@@ -42,11 +41,13 @@ import {ListMovies, MovieListItem} from "../models/models.ts";
     async createListMovieItem (req,res){
         try{
             const {movieId, listId} = req.body;
+            console.log(movieId)
+            console.log(listId)
             const listMovies:any = await ListMovies.findOne({where:{id:listId}})
 
             const listItemCheck:any = await MovieListItem.findOne({where:{movieId:movieId}})
-            console.log(listItemCheck)
-            if(listItemCheck.listId === listMovies.id){
+
+            if(listItemCheck != null && listItemCheck.listMovieId === listMovies.id){
                 res.json({message:"already exist"})
 
             }

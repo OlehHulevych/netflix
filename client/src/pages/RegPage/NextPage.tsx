@@ -14,6 +14,7 @@ const NextPage = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [allValid, setAllValid] = useState<boolean>(false);
     const [usedName, setUsedName] = useState<boolean>(false);
+    const [role, setRole] = useState<String>("USER");
     // @ts-ignore
 
     useEffect(()=>{
@@ -40,7 +41,7 @@ const NextPage = () => {
         e.preventDefault();
         try{
             // @ts-ignore
-            const data = await registration(email, name, password);
+            const data = await registration(email, name, password, role);
 
 
                 setEmail("");
@@ -78,6 +79,13 @@ const NextPage = () => {
                         <input  type={"text"}  id="name" value={name} onChange={(e:any)=>onChange(e)} className={"pl-4 text-xl w-1/2  w-full px-1 py-1 h-[60px] text-base  outline-none group rounded-md peer max-[1090px]:h-[50px] "} required={true}/>
                         <label htmlFor={"name"} className={"cursor-text absolute text-black text-base  transform px-1 top-4 left-0 peer-focus:text-[15px] pl-4 peer-focus:-top-0.5  peer-focus:pb-2 peer-valid:text-[15px] peer-valid:-top-0.5 peer-valid:pb-2   "} >Name</label>
                         {usedName && <div className={"text-red-500 mt-2"}>Name is using by someone</div>}
+                    </div>
+                    <div className={"flex mt-2"}>
+
+                        <div onClick = {()=>setRole("USER")}  className={`text-white capitalize text-xl mr-4 block border-white border-2 border-solid px-4 py-2 cursor-pointer font-bold hover:bg-white hover:text-black max-[600px]:text-base ${role==='USER'?" bg-red-500":"bg-none text-white"}`}  >USER</div>
+                        <div onClick = {()=>setRole("ADMIN")}  className={`text-white capitalize text-xl mr-4 block border-white border-2 border-solid px-4 py-2 cursor-pointer font-bold hover:bg-white hover:text-black max-[600px]:text-base ${role==='ADMIN'?" bg-red-500":"bg-none text-white"}`}  >ADMIN</div>
+
+
                     </div>
                     <div className={"relative my-4 flex "}>
                         <input type={showPassword?"text":"password"} id="password" value={password} onChange={(e)=>setPassword(e.target.value)}

@@ -33,7 +33,7 @@ import { Request, Response, NextFunction } from 'express';
 
     async login(req:Request,res:Response,next:NextFunction){
        try{
-           const {email, password} = req.body;
+           const {email, password,role} = req.body;
            const user:any = await User.findOne({where:{email}})
            if(!user){
                return res.json({message:"User not found"})
@@ -42,7 +42,7 @@ import { Request, Response, NextFunction } from 'express';
            if(!comparePassword){
                return res.json({message:"Wrong Password"})
            }
-           const token = jwt.sign({id:user.id, name:user.name, password:user.password}, process.env.JWT_SECRET_KEY, {expiresIn:'168h'});
+           const token = jwt.sign({id:user.id, name:user.name, password:user.password, role:role}, process.env.JWT_SECRET_KEY, {expiresIn:'168h'});
            return res.json({token:token});
        }
        catch (e){

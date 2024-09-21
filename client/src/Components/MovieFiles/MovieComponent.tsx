@@ -1,15 +1,15 @@
 import {FaPlay} from "react-icons/fa";
 import { CiCirclePlus } from "react-icons/ci";
 import {useParams} from "react-router-dom";
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState} from "react";
 import {getMovieOne} from "../../http/MovieAPI.ts";
 import ReactPlayer from "react-player";
 
 import {Element, Link} from 'react-scroll'
-import {addMovieToList, checkMovieExist} from "../../http/MovieAPI.ts";
+import {addMovieToList, checkMovieExist, removeMovieFromList} from "../../http/MovieAPI.ts";
 
 import Footer from "../Footer.tsx";
-import {ListContext} from "../../context/ListContext.tsx";
+
 
 
 
@@ -26,7 +26,7 @@ const MovieComponent = () => {
     const [movie, setMovie] = useState<any>();
     const [added, setAdded] = useState<string>("add")
     // @ts-ignore
-    const {listId} = useContext(ListContext);
+    const [listId,setListId] = useState(localStorage.getItem('listId'));
 
 
 
@@ -46,10 +46,10 @@ const MovieComponent = () => {
             }
             else{
                 console.log(data.message)
-                setAdded("added")
+                setAdded("remove")
             }
         })
-    },[])
+    },[added])
 
 
     const FormatDuration = (duration:string) => {
@@ -70,9 +70,18 @@ const MovieComponent = () => {
 
     const handleAddMovieList = async (e:React.MouseEvent<HTMLButtonElement>) =>{
         e.preventDefault();
-        console.log(id,listId)
-        const data = await addMovieToList(id,listId);
-        console.log(data);
+        if(added==='add'){
+            console.log(id,listId)
+            const data = await addMovieToList(id,listId);
+            setAdded('remove')
+            console.log(data);
+        }
+        else if(added==='remove'){
+            const data = await removeMovieFromList(id, listId)
+            setAdded('add')
+            console.log(data)
+        }
+
 
     }
 

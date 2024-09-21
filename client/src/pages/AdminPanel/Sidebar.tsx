@@ -1,8 +1,7 @@
 
-import {FaPlayCircle, FaSearch} from "react-icons/fa";
+import {FaPlayCircle} from "react-icons/fa";
 import {MdMovieCreation} from "react-icons/md";
-import {PiTelevisionSimple} from "react-icons/pi";
-import {CiBoxList} from "react-icons/ci";
+
 import {Link} from "react-router-dom";
 import {logout} from "../../http/userAPI.ts";
 import {useNavigate} from 'react-router-dom'
@@ -32,6 +31,7 @@ const Sidebar = ({opened}:props) => {
         user.id = data.id;
         user.name = data.name;
         user.email = data.email;
+        user.role = data.role
 
         console.log(user)
 

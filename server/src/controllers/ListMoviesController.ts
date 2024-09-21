@@ -57,12 +57,33 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
             }
 
         }
+
+
         catch (e){
             console.error(e)
             return res.status(500).json(e);
         }
 
 
+    }
+
+    async removeListMovieItem(req,res){
+        try{
+            const {movieId, listId} = req.body;
+            console.log(movieId)
+            console.log(listId)
+
+
+            const deleteItem:any = await MovieListItem.destroy({where:{movieId:movieId, ListMovieId:listId}})
+            return res.status(200).json(deleteItem);
+
+        }
+
+
+        catch (e){
+            console.error(e)
+            return res.status(500).json(e);
+        }
     }
 
     async checkIfExistInList(req,res) {

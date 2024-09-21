@@ -2,8 +2,8 @@ import {$authHost, $host} from "./index.ts";
 import { jwtDecode } from "jwt-decode";
 
 
-export const registration = async(email:String,name:String, password:String)=>{
-    const {data} = await $host.post('api/user/registration', {email, name, password, role:'USER'});
+export const registration = async(email:String,name:String, password:String, role:String)=>{
+    const {data} = await $host.post('api/user/registration', {email, name, password, role});
     console.log("API Response:", data); // Log the full response
 
     if (typeof data.token === 'string') {
@@ -53,6 +53,7 @@ export const getUserInfo = async () => {
         user.id = userInfo.data.user.id;
         user.name = userInfo.data.user.name;
         user.email = userInfo.data.user.email;
+        user.role = userInfo.data.user.role
         return user
     }
     catch (e){

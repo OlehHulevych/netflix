@@ -42,6 +42,7 @@ export const ListProvider:React.FC<providerProps> = ({children}) => {
                         console.log("Data received: ", data);
                         setListInfo(data); // Update the listInfo state
                         setListId(data.id); // Update the listId state
+                        localStorage.setItem('listId', data.id)
                     })
                     .catch((err) => {
                         console.error("Error fetching list by ID: ", err);

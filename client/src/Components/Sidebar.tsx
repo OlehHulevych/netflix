@@ -9,6 +9,8 @@ import {useNavigate} from 'react-router-dom'
 import {useContext, useEffect} from 'react';
 import {RegContext} from "../context/RegContext.tsx";
 import {getUserInfo} from "../http/userAPI.ts";
+import { RiAdminLine } from "react-icons/ri";
+
 
 
 type props ={
@@ -31,8 +33,11 @@ const Sidebar = ({opened}:props) => {
         user.id = data.id;
         user.name = data.name;
         user.email = data.email;
+        user.role = data.role
 
         console.log(user)
+        console.log(user.role)
+
 
     }
 
@@ -45,6 +50,13 @@ const Sidebar = ({opened}:props) => {
         logout()
         navigate('/login');
 
+    }
+
+    const goAdmin=()=>{
+
+        if(user.role === 'ADMIN'){
+            navigate('/admin/main')
+        }
     }
 
     // @ts-ignore
@@ -81,6 +93,10 @@ const Sidebar = ({opened}:props) => {
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <CiBoxList className={"mr-2 text-3xl max-[880px]:text-xl"}/>
                 <div className={"text-lg"}>My List</div>
+            </div>
+            <div onClick={()=>goAdmin()} className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
+                <RiAdminLine className={"mr-2 text-3xl max-[880px]:text-xl"}/>
+                <div className={"text-lg"}>log in as admin</div>
             </div>
 
         </div>

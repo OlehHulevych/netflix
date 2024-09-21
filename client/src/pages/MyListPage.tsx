@@ -1,6 +1,6 @@
 import Layout from "../Layout.tsx";
 import MovieItem from "../Components/MovieFiles/MovieItem.tsx";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect} from "react";
 import {ListContext} from "../context/ListContext.tsx";
 import {jwtDecode} from "jwt-decode";
 import {getListById} from "../http/MovieAPI.ts";
@@ -15,8 +15,6 @@ const MyListPage = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-
-
         if (token) {
             try {
                 const decodedToken: any = jwtDecode(token);

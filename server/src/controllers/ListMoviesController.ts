@@ -43,16 +43,16 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
             const {movieId, listId} = req.body;
             console.log(movieId)
             console.log(listId)
-            const listMovies:any = await ListMovies.findOne({where:{id:listId}})
 
-            const listItemCheck:any = await MovieListItem.findOne({where:{movieId:movieId}})
 
-            if(listItemCheck != null && listItemCheck.listMovieId === listMovies.id){
+            const listItemCheck:any = await MovieListItem.findOne({where:{movieId:movieId, ListMovieId:listId}})
+
+            if(listItemCheck!=null){
                 res.json({message:"already exist"})
 
             }
             else{
-                const result = await MovieListItem.create({movieId:movieId , ListMovieId:listMovies.id });
+                const result = await MovieListItem.create({movieId:movieId , ListMovieId:listId });
                 return res.json(result);
             }
 
@@ -65,16 +65,21 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
 
     }
 
-    async checkIfExistInList(req,res){
-        const {listId,movieId} = req.params;
-        const findOne:any = await MovieListItem.findOne({where:{listId:listId},})
+    async checkIfExistInList(req,res) {
+        try{
+        const {listId, movieId} = req.body;
 
-        if(findOne.movieId===movieId){
-            return res.json({message:"Already exist"})
+        const findOne: any = await MovieListItem.findOne({where: {ListMovieId: listId, movieId:movieId},})
+
+        if (findOne!=null) {
+            return res.json({message: "Already exist"})
+        } else {
+            return res.json({message: "ok"});
         }
-        else{
-            return res.json({message:"ok"});
-        }
+    }
+    catch (e){
+            return res.status(500).json(e)
+    }
     }
  }
 

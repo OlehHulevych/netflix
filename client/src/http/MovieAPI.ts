@@ -44,6 +44,7 @@ export const addMovieToList = async (movieId:any, listId:any)=>{
 }
 
 export const checkMovieExist = async (movieId:any, listId:any)=>{
-    const {data} = await $authHost.post('api/list-movie/check', {movieId, listId})
+    // @ts-ignore
+    const {data} = await $authHost.post('api/list-movie/check/', {movieId, listId})
     return data;
 }

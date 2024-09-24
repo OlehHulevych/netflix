@@ -74,11 +74,11 @@ const AddMoviePage = () => {
     return (
         <>
             <header className={"w-full h-4 bg-black-500  z-20 max-[768px]:mb-8 "}>
-                <Link to={"/admin"}>
+                <Link to={"/admin/main"}>
                     <img src="/images/Netflix_Logo_1.png" alt="" className={"w-[12%] h-1/8 max-[900px]:w-2/12 cursor-pointer"}/>
                 </Link>
             </header>
-            <div className={`transition-all duration-500 ease-in-out fixed text-center top-4 right-[2%] w-[20%]  text-white border-2 border-green-500 px-6 py-2 text-xl font-bold uppercase font-inter bg-green-500 ${added?'right-[2%]':'right-[-30%]'}`}>The movie was added</div>
+            <div className={`transition-all duration-500 ease-in-out fixed text-center top-4 right-[2%] w-[20%]  text-white border-2 border-green-500 px-6 py-2 text-xl font-bold uppercase font-inter bg-green-500 ${added?'right-[2%]':'right-[-50%]'}`}>The movie was added</div>
         <main  className={"w-full min-h-screen flex justify-center items-center overflow-hidden    text-white font-inter "}>
             <form onSubmit={(e:React.FormEvent<HTMLFormElement>)=>addMoviesEvent(e)} className={" flex flex-col text-black align-middle  max-[430px]:items-center"} action="">
                 <div className={"mb-2 align-middle flex flex-col  "}>

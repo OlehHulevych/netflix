@@ -84,15 +84,15 @@ const Sidebar = ({opened}:props) => {
             </div>
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <MdMovieCreation className={"mr-2 text-3xl max-[880px]:text-xl"}/>
-                <div className={"text-lg"}>Movies</div>
+                <div className={"text-lg"}><Link to={"/movies"}>Movies</Link></div>
             </div>
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white"}>
                 <PiTelevisionSimple className={"mr-2 text-3xl max-[880px]:text-xl"}/>
-                <div className={"text-lg"}>TV Shows</div>
+                <div className={"text-lg"}><Link to={"/tvshows"}>TV Shows</Link></div>
             </div>
             <div className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <CiBoxList className={"mr-2 text-3xl max-[880px]:text-xl"}/>
-                <div className={"text-lg"}>My List</div>
+                <div className={"text-lg"}><Link to={"/movies"} >My List</Link></div>
             </div>
             <div onClick={()=>goAdmin()} className={" text-gray-500 flex w-full items-center align-top mt-6 cursor-pointer transform hover:scale-110 hover:translate-x-4 hover:text-white "}>
                 <RiAdminLine className={"mr-2 text-3xl max-[880px]:text-xl"}/>

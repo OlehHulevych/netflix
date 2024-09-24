@@ -128,8 +128,8 @@ const MovieComponent = () => {
             </div>
         </div>
             <Element name={"movie"}>
-                <div className = {"w-full flex justify-center items-center  relative overflow-hidden  text-white    min-h-screen max-[550px] "}>
-                    <ReactPlayer width={"1000px"} height={500} url={movie?.trailer}/>
+                <div className = {"w-full flex justify-center items-center  relative overflow-hidden  text-white    min-h-screen max-[550px]:min-h-[150px] "}>
+                    <ReactPlayer  width={"70%"}  url={movie?.trailer}/>
                 </div>
             </Element>
         </main>

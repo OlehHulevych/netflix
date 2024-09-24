@@ -3,14 +3,26 @@ import {Type} from '../models/models.ts'
 
 class TypeController{
     async create(req, res){
-        const {name} = req.body;
-        const newType = await Type.create({name});
-        return res.json(newType)
+        try{
+            const {name} = req.body;
+            const newType = await Type.create({name});
+            return res.json(newType)
+        }
+        catch (e){
+            return res.json(e);
+        }
+
     }
 
     async getAll(req,res){
-        const types = await Type.findAll();
-        return res.json(types);
+        try{
+            const types = await Type.findAll();
+            return res.json(types);
+        }
+        catch (e){
+            return res.status(500).json(e);
+        }
+
     }
 }
 

@@ -11,6 +11,8 @@ import Main from "./pages/Main.tsx";
 import MyListPage from "./pages/MyListPage.tsx";
 import AdminPage from "./pages/AdminPanel/AdminPage.tsx";
 import AddMoviePage from "./pages/AdminPanel/AddMoviePage.tsx";
+import MoviesPage from "./pages/MoviesPage.tsx";
+import TvShowPage from "./pages/TvShowPage.tsx";
 
 const AppRouters = () => {
     return (
@@ -26,6 +28,9 @@ const AppRouters = () => {
             <Route path = {"/favorites"} element={<MyListPage/>}/>
             <Route path = {"/admin/main"} element={<AdminPage/>}/>
             <Route path={"/admin/add"} element={<AddMoviePage/>}/>
+            <Route path={"/movies"} element={<MoviesPage/>}/>
+            <Route path={"/tvshows"} element={<TvShowPage/>}/>
+
 
         </Routes>
 

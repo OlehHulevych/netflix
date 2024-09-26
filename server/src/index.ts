@@ -14,12 +14,7 @@ import rouer from './routes/index.ts'
 
 const app = express();
 
-app.use(cors({
-    origin:'https://netflix-client-fv8p.onrender.com',
-    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials:true,
-    optionsSuccessStatus:200
-}))
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../static')))
 

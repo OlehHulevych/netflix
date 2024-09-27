@@ -18,7 +18,9 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     origin:'https://netflix-client-gamma.vercel.app',
+    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials:true,
+    optionsSuccessStatus:200
 
 }))
 app.use(express.static(path.join(__dirname, '../static')))

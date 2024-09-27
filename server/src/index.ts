@@ -17,7 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin:['https://netflix-client-two.vercel.app', 'http://localhost:5173'],
+    origin:'https://netflix-client-gamma.vercel.app',
     credentials:true,
 
 }))

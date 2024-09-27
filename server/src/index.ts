@@ -14,13 +14,13 @@ import {sequelize} from './db.ts'
 
 const app = express();
 
-app.use(cors({
-    origin:'https://netflix-client-two.vercel.app',
-    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials:true,
-    optionsSuccessStatus:200
-}))
+
 app.use(express.json());
+app.use(cors({
+    origin:['https://netflix-client-two.vercel.app', 'http://localhost:5173'],
+    credentials:true,
+
+}))
 app.use(express.static(path.join(__dirname, '../static')))
 
 app.use(fileUpload({}));

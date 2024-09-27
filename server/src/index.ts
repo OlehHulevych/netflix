@@ -15,7 +15,7 @@ import {sequelize} from './db.ts'
 const app = express();
 
 app.use(cors({
-    origin:'https://netflix-client-two.vercel.app'
+    origin:'https://netflix-client-3fm4s0o5j-olegprogrammeruas-projects.vercel.app'
 }))
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../static')))

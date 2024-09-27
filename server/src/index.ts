@@ -13,9 +13,6 @@ import {sequelize} from './db.ts'
 
 
 const app = express();
-
-
-app.use(express.json());
 app.use(cors({
     origin:'https://netflix-client-gamma.vercel.app',
     methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -23,10 +20,17 @@ app.use(cors({
     optionsSuccessStatus:200
 
 }))
+
+
+app.use(express.json());
+
 app.use(express.static(path.join(__dirname, '../static')))
 
 app.use(fileUpload({}));
 app.use('/api', router)
+
+
+
 
 app.get("/",(req,res)=>{
     res.json({message:"Hello world"})

@@ -17,7 +17,7 @@ export default function AdComponent() {
       <div className={'text-white pt-5 max-[768px]:text-center '}>
         <button className={'inline-flex align-top justify-center w-[157px] items-center text-black text-xl font-bold max-[950px]:max-h-[50px]   h-[75px]  bg-white mr-10 rounded-sm group hover:bg-opacity-30 hover:text-white max-[900px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px] max-[768px]:p-2 max-[600px]:text-base max-[530px]:p-0.5 max-[530px]:max-h-[40px]'}>
           <FaPlay className={'text-3xl max-[768px]:text-6xl max-[530px]:text-xl '}/>
-          <div className={'ml-2'}><Link to={"/movies/7"}>Play</Link></div>
+          <div className={'ml-2'}><Link to={"/movies/6"}>Play</Link></div>
         </button>
         <Link to={"/movies/7"}>
         <button className={'inline-flex align-top justify-center max-[950px]:w-1/4 max-[950px]:h-full max-[950px]:max-h-[50px]  p-2 w-[157px] items-center text-black text-xl font-bold   h-[75px]  bg-white mr-5 rounded-sm hover:bg-opacity-30 hover:text-white max-[768px]:p-2 max-[600px]:text-base max-[530px]:p-0.5 max-[530px]:max-h-[40px]'}>

@@ -5,13 +5,14 @@ dotenv.config();
 
 // @ts-ignore
 export const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-
+    'postgres://default:eyD0tGHm1NEc@ep-shy-hill-a2bkagbz-pooler.eu-central-1.aws.neon.tech:5432/verceldb', // Your connection string
     {
-        dialect:'postgres',
-        host:process.env.DB_HOST,
-        port:parseInt(process.env.DB_PORT)
+        dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false, // This ensures SSL connection
+            },
+        },
     }
-)
+);

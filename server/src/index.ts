@@ -23,6 +23,10 @@ app.use(express.static(path.join(__dirname, '../static')))
 app.use(fileUpload({}));
 app.use('/api', router)
 
+app.get("/",(req,res)=>{
+    res.json({message:"Hello world"})
+})
+
 
 const start = async ()=>{
     try {

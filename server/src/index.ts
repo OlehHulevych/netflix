@@ -13,13 +13,7 @@ import {sequelize} from './db.ts'
 
 
 const app = express();
-app.use(cors({
-    origin:'https://netflix-client-gamma.vercel.app',
-    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials:true,
-    optionsSuccessStatus:200
-
-}))
+app.use(cors());
 
 
 app.use(express.json());

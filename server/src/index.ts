@@ -13,7 +13,9 @@ import {sequelize} from './db.ts'
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://startling-empanada-d42fde.netlify.app'
+}));
 
 
 app.use(express.json());

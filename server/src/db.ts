@@ -5,7 +5,7 @@ dotenv.config();
 
 // @ts-ignore
 export const sequelize = new Sequelize(
-    'postgres://default:eyD0tGHm1NEc@ep-shy-hill-a2bkagbz-pooler.eu-central-1.aws.neon.tech:5432/verceldb', // Your connection string
+    process.env.POSTGRES_URL, // Your connection string
     {
         dialect: 'postgres',
         dialectOptions: {

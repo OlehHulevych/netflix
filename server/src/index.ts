@@ -14,7 +14,7 @@ import {sequelize} from './db.ts'
 
 const app = express();
 app.use(cors({
-    origin: 'https://netflix-client-ngj8nejjh-olegprogrammeruas-projects.vercel.app',
+    origin: 'https://netflix-client-gamma.vercel.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 
 }));

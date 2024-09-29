@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import ApiError from "../../error/ApiError.ts";
+
 import {User, ListMovies} from '../models/models.ts'
 import { Request, Response, NextFunction } from 'express';
 
@@ -10,11 +10,11 @@ import { Request, Response, NextFunction } from 'express';
         try{
             const {email, name, password,role} = req.body;
             if(!email || !password){
-                return next(ApiError.badRequest("Bad password or email"));
+                return res.status(500).json("the bad request");
             }
             const candidate = await User.findOne({where:{email}});
             if(candidate){
-                return next(ApiError.badRequest("The user with this email has already existed"));
+                return res.status(500).json("the bad request");
             }
             const cryptedPassword= await bcrypt.hash(password, 5);
             const user:any = await User.create({email, name,role, password:cryptedPassword});

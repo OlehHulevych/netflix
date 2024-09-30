@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-import {User, ListMovies} from '../models/models.ts'
+import {User, ListMovies} from '../models/models'
 import { Request, Response, NextFunction } from 'express';
 
  class UserController {
@@ -21,7 +21,7 @@ import { Request, Response, NextFunction } from 'express';
 
             const movieList = await ListMovies.create({userId:user.id})
 
-            const token = jwt.sign({id:user.id, email:user.email, name:user.name}, process.env.JWT_SECRET_KEY, {expiresIn: '168h'} );
+            const token = jwt.sign({id:user.id, email:user.email, name:user.name}, process.env.JWT_SECRET_KEY||'', {expiresIn: '168h'} );
             res.json({token:token})
         }
         catch (e){
@@ -42,7 +42,7 @@ import { Request, Response, NextFunction } from 'express';
            if(!comparePassword){
                return res.json({message:"Wrong Password"})
            }
-           const token = jwt.sign({id:user.id, name:user.name, password:user.password, role:role}, process.env.JWT_SECRET_KEY, {expiresIn:'168h'});
+           const token = jwt.sign({id:user.id, name:user.name, password:user.password, role:role}, process.env.JWT_SECRET_KEY||'', {expiresIn:'168h'});
            return res.json({token:token});
        }
        catch (e){
@@ -51,9 +51,9 @@ import { Request, Response, NextFunction } from 'express';
 
     }
 
-    async check(req,res:Response){
+    async check(req:any,res:Response){
        try{
-           const token = jwt.sign({id:req.user.id, name:req.user.name, password:req.user.password}, process.env.JWT_SECRET_KEY, {expiresIn:'168h'});
+           const token = jwt.sign({id:req.user.id, name:req.user.name, password:req.user.password}, process.env.JWT_SECRET_KEY||'', {expiresIn:'168h'});
            return res.json({token});
        }
        catch(e){
@@ -62,7 +62,7 @@ import { Request, Response, NextFunction } from 'express';
     }
 
 
-    async getOne(req,res){
+    async getOne(req:any,res:any){
         try{
             console.log(req.params)
             const id = req.params.id
@@ -75,7 +75,7 @@ import { Request, Response, NextFunction } from 'express';
     }
 
 
-    async checkOne(req,res){
+    async checkOne(req:any,res:any){
       try{
           const {email} = req.body;
           console.log(email)
@@ -93,7 +93,7 @@ import { Request, Response, NextFunction } from 'express';
       }
     }
 
-    async checkName(req,res){
+    async checkName(req:any,res:any){
         try{
             const {name} = req.body;
             const findUser = await User.findOne({where:{name}});

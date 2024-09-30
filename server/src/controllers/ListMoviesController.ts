@@ -1,7 +1,7 @@
-import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
+import {ListMovies, Movie, MovieListItem} from "../models/models";
 
  class ListMoviesController{
-    async getAll(req,res){
+    async getAll(req:any,res:any){
         try{
             const result = await ListMovies.findAll();
             res.json(result);
@@ -11,7 +11,7 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
         }
     }
 
-    async getOne(req,res){
+    async getOne(req:any,res:any){
         try{
             const {id} = req.params;
             const list = await ListMovies.findOne({where:{id},
@@ -23,7 +23,7 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
         }
     }
 
-    async getOneByUser(req,res){
+    async getOneByUser(req:any,res:any){
         try{
             const {id} = req.params;
             const foundList = await ListMovies.findOne({where:{userId:id},
@@ -38,7 +38,7 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
     }
 
 
-    async createListMovieItem (req,res){
+    async createListMovieItem (req:any,res:any){
         try{
             const {movieId, listId} = req.body;
             console.log(movieId)
@@ -67,7 +67,7 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
 
     }
 
-    async removeListMovieItem(req,res){
+    async removeListMovieItem(req:any,res:any){
         try{
             const {movieId, listId} = req.body;
             console.log(movieId)
@@ -86,7 +86,7 @@ import {ListMovies, Movie, MovieListItem} from "../models/models.ts";
         }
     }
 
-    async checkIfExistInList(req,res) {
+    async checkIfExistInList(req:any,res:any) {
         try{
         const {listId, movieId} = req.body;
 

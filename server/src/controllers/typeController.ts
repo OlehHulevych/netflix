@@ -1,8 +1,8 @@
-import {Type} from '../models/models.ts'
+import {Type} from '../models/models'
 
 
 class TypeController{
-    async create(req, res){
+    async create(req:any, res:any){
         try{
             const {name} = req.body;
             const newType = await Type.create({name});
@@ -14,7 +14,7 @@ class TypeController{
 
     }
 
-    async getAll(req,res){
+    async getAll(req:any,res:any){
         try{
             const types = await Type.findAll();
             return res.json(types);

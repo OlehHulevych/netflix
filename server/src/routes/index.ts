@@ -1,9 +1,9 @@
 import Router from 'express';
-import userRoute from './userRoute.ts'
-import typeRoute from "./typeRoute.ts";
-import genreRoute from "./genreRoute.ts";
-import movieRoute from "./movieRoute.ts";
-import listMovieRoute from "./ListMovieRoute.ts";
+import userRoute from './userRoute'
+import typeRoute from "./typeRoute";
+import genreRoute from "./genreRoute";
+import movieRoute from "./movieRoute";
+import listMovieRoute from "./ListMovieRoute";
 
 const router = Router();
 

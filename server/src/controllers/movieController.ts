@@ -1,10 +1,10 @@
-import {Movie, Genre, Type, MovieListItem} from '../models/models.ts'
+import {Movie, Genre, Type, MovieListItem} from '../models/models'
 import * as uuid from 'uuid';
 import path from 'path'
 
 
 class MovieController{
-    async create(req, res){
+    async create(req:any, res:any){
         try{
             const {name, year, duration, description, typeId, genreId, trailer, banner_trailer } = req.body;
             console.log(req.body)
@@ -25,7 +25,7 @@ class MovieController{
 
     }
 
-    async getAll(req,res){
+    async getAll(req:any,res:any){
         try{
             const types = await Movie.findAll();
             return res.json(types);
@@ -36,7 +36,7 @@ class MovieController{
 
     }
 
-    async getOne(req,res){
+    async getOne(req:any,res:any){
         try{
             const {id} = req.params;
             const movie = await Movie.findOne({

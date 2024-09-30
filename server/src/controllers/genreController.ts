@@ -1,8 +1,8 @@
-import {Genre} from '../models/models.ts'
+import {Genre} from '../models/models'
 
 
 class GenreController{
-    async create(req, res){
+    async create(req:any, res:any){
         try{
             const {name} = req.body;
             const newType = await Genre.create({name});
@@ -14,7 +14,7 @@ class GenreController{
 
     }
 
-    async getOne(req,res){
+    async getOne(req:any,res:any){
         try{
             const {id} = req.params;
             const selectedGenre = await Genre.findOne({where:{id}});
@@ -25,7 +25,7 @@ class GenreController{
         }
     }
 
-    async getAll(req,res){
+    async getAll(req:any,res:any){
         try{
             const types = await Genre.findAll();
             return res.json(types);

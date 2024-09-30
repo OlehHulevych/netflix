@@ -1,15 +1,16 @@
 import express, {Request, Response} from 'express';
 import dotenv from "dotenv"
-const model = require('./models/models.ts')
+import {sequelize} from './db'
+const model = require('./models/models')
 import path from "path";
 
 import cors from 'cors'
-import router from './routes/index.ts'
+import router from './routes/index'
 import fileUpload from 'express-fileupload';
 dotenv.config();
 
 const port = process.env.PORT
-import {sequelize} from './db.ts'
+
 
 
 const app = express();

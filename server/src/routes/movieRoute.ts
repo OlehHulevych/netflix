@@ -1,5 +1,5 @@
 import Router from 'express';
-import MovieController from "../controllers/movieController.ts";
+import MovieController from "../controllers/movieController";
 
 const router = Router();
 

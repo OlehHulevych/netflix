@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "tsc & node dist/index.js",
+    "start": "nodemon /index.ts",
     "dev": "nodemon  ./src/index.ts",
-    "build": "rimraf dist && tsc",
+    "build": "tsc",
     "lint": "eslint . - ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -34,6 +34,7 @@
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.4",
     "pg": "^8.12.0",
+    "rimraff": "^0.0.1-security",
     "save-dev": "^0.0.1-security",
     "sequelize": "^6.37.3",
     "ts-node": "^10.9.2",

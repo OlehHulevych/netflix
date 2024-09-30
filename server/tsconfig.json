@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES6",                           // Specify ECMAScript target version
-    "module": "commonjs",                      // Specify module code generation
-    "outDir": "./dist",                        // Redirect output to the "dist" folder
-    "rootDir": "./src",                        // Specify the root folder of TypeScript files
-    "strict": true,
-    "esModuleInterop": true,            // Enable strict type-checking options
-
-
-
-    "allowSyntheticDefaultImports": true
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["./src/**/*"]
 }

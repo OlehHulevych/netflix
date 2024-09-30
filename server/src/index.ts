@@ -9,7 +9,7 @@ import router from './routes/index'
 import fileUpload from 'express-fileupload';
 dotenv.config();
 
-const port = process.env.PORT
+const port = process.env.PORT||5000
 
 
 

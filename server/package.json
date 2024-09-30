@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "tsc && node --watch dist/index.js",
     "dev": "nodemon  ./src/index.ts",
     "build": "tsc",
     "lint": "eslint . - ext .ts",

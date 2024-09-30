@@ -4,11 +4,16 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "dev": "nodemon  ./src/index.ts",
-    "build": "tsc",
-    "lint": "eslint . - ext .ts",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -34,6 +39,7 @@
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.4",
     "pg": "^8.12.0",
+    "pre-commit": "^1.2.2",
     "rimraff": "^0.0.1-security",
     "save-dev": "^0.0.1-security",
     "sequelize": "^6.37.3",

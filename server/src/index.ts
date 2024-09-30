@@ -9,7 +9,7 @@ import router from './routes/index'
 import fileUpload from 'express-fileupload';
 dotenv.config();
 
-const port = process.env.PORT||5000
+
 
 
 
@@ -40,7 +40,7 @@ const start = async ()=>{
     try {
         await sequelize.authenticate()
         await sequelize.sync()
-        app.listen(port, () => console.log(`Server started on port ${port}`))
+        app.listen(5000, () => console.log(`Server started on port ${5000}`))
     } catch (e) {
         console.log(e)
     }

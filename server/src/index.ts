@@ -15,7 +15,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: 'https://startling-empanada-d42fde.netlify.app',
+    origin: 'https://netflix-client-fv8p.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
     optionsSuccessStatus: 200

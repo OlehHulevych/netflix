@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 
 
 export const registration = async(email:String,name:String, password:String, role:String)=>{
-    const {data} = await $host.post('api/user/registration', {email, name, password, role});
+    const {data} = await $host.post('https://netflix-backend-rlp5.onrender.com/api/user/registration', {email, name, password, role});
     console.log("API Response:", data); // Log the full response
 
     if (typeof data.token === 'string') {
@@ -16,7 +16,7 @@ export const registration = async(email:String,name:String, password:String, rol
 
 
 export const login = async(email:String, password:String)=> {
-    const { data } = await $host.post('api/user/login', { email, password });
+    const { data } = await $host.post('https://netflix-backend-rlp5.onrender.com/api/user/login', { email, password });
     console.log("API Response:", data); // Log the full response
     if(data.message==="Wrong Password" || data.message==="User not found"){
         return data
@@ -34,7 +34,7 @@ export const login = async(email:String, password:String)=> {
 
 export const check = async()=>{
 
-    const {data} = await $authHost.get('api/user/auth');
+    const {data} = await $authHost.get('https://netflix-backend-rlp5.onrender.com/api/user/auth');
     localStorage.setItem("token", data.token);
     return jwtDecode(data.token);
 }
@@ -48,7 +48,7 @@ export const getUserInfo = async () => {
         const token:any = localStorage.getItem('token');
         const data:any = jwtDecode(token)
         const id = data.id;
-        const userInfo = await $host.get(`api/user/${id}`);
+        const userInfo = await $host.get(`https://netflix-backend-rlp5.onrender.com/api/user/${id}`);
         const user:any = {}
         user.id = userInfo.data.user.id;
         user.name = userInfo.data.user.name;
@@ -64,11 +64,11 @@ export const getUserInfo = async () => {
 }
 
 export const checkEmail = async (email:String)=>{
-    const data = await $host.post('api/user/check-email', {email});
+    const data = await $host.post('https://netflix-backend-rlp5.onrender.com/api/user/check-email', {email});
     return data;
 }
 
 export const checkName = async(name:String)=>{
-    const data = await $host.post('api/user/check-name', {name});
+    const data = await $host.post('https://netflix-backend-rlp5.onrender.com/api/user/check-name', {name});
     return data
 }

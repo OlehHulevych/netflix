@@ -96,7 +96,7 @@ const MovieComponent = () => {
             <div className={`   overflow-hidden absolute bg-custom-gradient box-shadow-xl w-1/2 h-full top-0 left-0 flex flex-col pl-8 flex justify-center  z-10 max-[768px]:w-full  max-[768px]:items-center  max-[768px]:justify-start max-[768px]:pt-10  `}>
                 <div className={" "}>
                 <div className={"max-[769px]:flex max-[769px]:justify-center pl-4 "}>
-                    <img  src={import.meta.env.VITE_API_URL+"name_images/"+movie?.name_img} alt="" className=' max-w-[500px] max-h-[250px] w-full -ml-10 max-[900px]:max-w-[350px] max-[900px]:-ml-5 max-[768px]:text-center max-[600px]:max-w-[250px] max-[530px]:max-w-[175px]   ' />
+                    <img  src={"https://netflix-backend-rlp5.onrender.com/"+"name_images/"+movie?.name_img} alt="" className=' max-w-[500px] max-h-[250px] w-full -ml-10 max-[900px]:max-w-[350px] max-[900px]:-ml-5 max-[768px]:text-center max-[600px]:max-w-[250px] max-[530px]:max-w-[175px]   ' />
                 </div>
                 <div className={"text-4xl font-bold text-white my-2 capitalize max-[900px]:text-2xl"}>{movie?.name}</div>
                 <div>

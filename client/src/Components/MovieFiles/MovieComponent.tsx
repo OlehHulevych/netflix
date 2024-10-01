@@ -90,7 +90,7 @@ const MovieComponent = () => {
     return (
         <>
         <main className={"w-full font-inter"}>
-        <div className={`  relative bg-[url(${import.meta.env.VITE_API_URL +"banner_images/"+movie?.banner_img}] bg-cover bg-center   w-full h-full min-h-screen  flex flex-col max-[470px]:h-[400px]`} >
+        <div className={`  relative bg-[url(${"https://netflix-backend-rlp5.onrender.com/" +"banner_images/"+movie?.banner_img}] bg-cover bg-center   w-full h-full min-h-screen  flex flex-col max-[470px]:h-[400px]`} >
             <img src={import.meta.env.VITE_API_URL +"banner_images/"+movie?.banner_img} alt="" className={" absolute w-full max-h-[800px] h-full object-fill max-[570px]:h-[400px] "}/>
             {/*content*/}
             <div className={`   overflow-hidden absolute bg-custom-gradient box-shadow-xl w-1/2 h-full top-0 left-0 flex flex-col pl-8 flex justify-center  z-10 max-[768px]:w-full  max-[768px]:items-center  max-[768px]:justify-start max-[768px]:pt-10  `}>

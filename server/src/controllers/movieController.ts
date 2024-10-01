@@ -1,6 +1,6 @@
 import {Movie, Genre, Type, MovieListItem} from '../models/models'
 // @ts-ignore
-import uuid from 'uuid'
+import { v4 as uuidv4} from 'uuid';
 import path from 'path'
 
 
@@ -11,8 +11,8 @@ class MovieController{
             console.log(req.body)
             const {name_image, banner_image} = req.files;
 
-            let name_image_filename = uuid.v4()+".jpg";
-            let banner_image_filename = uuid.v4()+".jpg";
+            let name_image_filename = uuidv4()+".jpg";
+            let banner_image_filename = uuidv4()+".jpg";
             name_image.mv(path.resolve(__dirname, '..','..', 'static','name_images', name_image_filename))
             banner_image.mv(path.resolve(__dirname, '..', '..', 'static', 'banner_images', banner_image_filename))
             console.log(banner_image_filename)

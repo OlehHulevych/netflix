@@ -15,9 +15,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: 'https://netflix-client-gamma.vercel.app/',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-
+    origin: 'https://startling-empanada-d42fde.netlify.app',
 }));
 
 

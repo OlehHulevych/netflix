@@ -1,6 +1,5 @@
 import {$authHost, $host} from "./index.ts";
 import { jwtDecode } from "jwt-decode";
-import axios from "axios";
 
 
 export const registration = async(email:String,name:String, password:String, role:String)=>{
@@ -17,7 +16,7 @@ export const registration = async(email:String,name:String, password:String, rol
 
 
 export const login = async(email:String, password:String)=> {
-    const { data } = await axios.post('api/user/login', { email, password });
+    const { data } = await $host.post('api/user/login', { email, password });
     console.log("API Response:", data); // Log the full response
     if(data.message==="Wrong Password" || data.message==="User not found"){
         return data
@@ -65,11 +64,11 @@ export const getUserInfo = async () => {
 }
 
 export const checkEmail = async (email:String)=>{
-    const data = await axios.post('api/user/check-email', {email});
+    const data = await $host.post('api/user/check-email', {email});
     return data;
 }
 
 export const checkName = async(name:String)=>{
-    const data = await axios.post('api/user/check-name', {name});
+    const data = await $host.post('api/user/check-name', {name});
     return data
 }

@@ -4,11 +4,11 @@ import axios, { AxiosRequestConfig} from "axios";
 
 
 const $host = axios.create({
-    baseURL:import.meta.env.VITE_API_URL
+    baseURL:'https://netflix-backend-rlp5.onrender.com/'
 })
 
 const $authHost = axios.create({
-    baseURL:import.meta.env.VITE_API_URL
+    baseURL:'https://netflix-backend-rlp5.onrender.com/'
 })
 
 const authInterceptor = (config:AxiosRequestConfig):AxiosRequestConfig=>{

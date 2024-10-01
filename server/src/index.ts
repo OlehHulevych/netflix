@@ -14,12 +14,7 @@ dotenv.config();
 
 
 const app = express();
-app.use(cors({
-    origin: 'https://startling-empanada-d42fde.netlify.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
-    optionsSuccessStatus: 200
-}));
+app.use(cors());
 
 
 app.use(express.json());

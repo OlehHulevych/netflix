@@ -1,5 +1,5 @@
 import {Movie, Genre, Type, MovieListItem} from '../models/models'
-// @ts-ignore
+
 import { v4 as uuidv4} from 'uuid';
 import path from 'path'
 

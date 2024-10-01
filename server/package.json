@@ -24,6 +24,7 @@
     "@types/express-fileupload": "^1.5.1",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.5.0",
+    "@types/uuid": "^10.0.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {
@@ -43,6 +44,6 @@
     "save-dev": "^0.0.1-security",
     "sequelize": "^6.37.3",
     "ts-node": "^10.9.2",
-    "uuid": "^10.0.0"
+    "uuid": "^8.3.0"
   }
 }

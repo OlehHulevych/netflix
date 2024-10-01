@@ -13,7 +13,7 @@ const MovieItem = ({name, preview_image, id}:props) => {
         <>
         <Link to={`/movies/${id}`}>
             <div className={"text-center mr-4 cursor-pointer "}>
-                <img className={"w-[341px] h-[142px] "} src={import.meta.env.VITE_API_URL +"banner_images/"+ preview_image} alt=""/>
+                <img className={"w-[341px] h-[142px] "} src={"https://netflix-backend-rlp5.onrender.com/" +"banner_images/"+ preview_image} alt=""/>
                 <div className={"mt-2"}>{name}</div>
             </div>
         </Link>

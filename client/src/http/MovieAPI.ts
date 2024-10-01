@@ -1,50 +1,51 @@
 import {$authHost} from "./index.ts";
+import axios from "axios";
 
 
 export const fetchTypes = async () =>{
-    const result = await $authHost.get('https://netflix-backend-rlp5.onrender.com/api/type/');
+    const result = await axios.get('https://netflix-backend-rlp5.onrender.com/api/type/');
     return result.data;
 }
 
 export const fetchGenres = async ()=>{
-    const result =  await $authHost.get('https://netflix-backend-rlp5.onrender.com/api/genre/');
+    const result =  await axios.get('https://netflix-backend-rlp5.onrender.com/api/genre/');
 
     return result.data
 }
 
 
 export const createMovie = async (device:any)=>{
-    const {data} = await $authHost.post('https://netflix-backend-rlp5.onrender.com/api/movie/', device);
+    const {data} = await axios.post('https://netflix-backend-rlp5.onrender.com/api/movie/', device);
     return data;
 }
 
 export const getMovies = async () =>{
-    const {data} = await $authHost.get('https://netflix-backend-rlp5.onrender.com/api/movie/');
+    const {data} = await axios.get('https://netflix-backend-rlp5.onrender.com/api/movie/');
     return data;
 }
 
 export const getMovieOne = async (id:any) =>{
-    const {data} = await $authHost.get(`https://netflix-backend-rlp5.onrender.com/api/movie/${id}`);
+    const {data} = await axios.get(`https://netflix-backend-rlp5.onrender.com/api/movie/${id}`);
     return data;
 }
 
 export const getGenreOne = async(id:any)=>{
-    const {data} = await $authHost.get(`https://netflix-backend-rlp5.onrender.com/api/genre/${id}`);
+    const {data} = await axios.get(`https://netflix-backend-rlp5.onrender.com/api/genre/${id}`);
     return data;
 }
 
 export const getListById = async(id:any) =>{
-    const {data} = await $authHost.get(`https://netflix-backend-rlp5.onrender.com/api/list-movie/user/${id}`);
+    const {data} = await axios.get(`https://netflix-backend-rlp5.onrender.com/api/list-movie/user/${id}`);
     return data;
 }
 
 export const addMovieToList = async (movieId:any, listId:any)=>{
-    const {data} = await $authHost.post('https://netflix-backend-rlp5.onrender.com/api/list-movie/', {movieId, listId});
+    const {data} = await axios.post('https://netflix-backend-rlp5.onrender.com/api/list-movie/', {movieId, listId});
     return data;
 }
 
 export const removeMovieFromList = async (movieId:any, listId:any)=>{
-    const {data} = await $authHost.post('https://netflix-backend-rlp5.onrender.com/api/list-movie/delete/', {movieId, listId});
+    const {data} = await axios.post('https://netflix-backend-rlp5.onrender.com/api/list-movie/delete/', {movieId, listId});
     return data;
 }
 
